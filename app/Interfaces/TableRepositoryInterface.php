@@ -3,3 +3,4 @@ namespace App\Interfaces;
 
 interface TableRepositoryInterface{  
 }
+ 

@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Repository;
- 
-use App\Interfaces\MeetRepositoryInterface; 
+  
+use App\Interfaces\TableRepositoryInterface;
 
-class TableRepository implements MeetRepositoryInterface
+class TableRepository implements  TableRepositoryInterface
 { 
     
 }

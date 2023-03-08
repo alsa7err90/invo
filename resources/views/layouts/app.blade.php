@@ -29,15 +29,16 @@
 <body>
     <div id="app">
         <div class="topbar">
-            hello {{ auth()->user()->name }}
+            hello   @if(auth()->user()) {{ auth()->user()->name }}
             <a class="dropdown-item" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
-document.getElementById('logout-form').submit();">
+                    document.getElementById('logout-form').submit();">
                 {{ __('Logout') }}
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
             </a>
+            @endif
         </div>
         @include('layouts.navbar')
 

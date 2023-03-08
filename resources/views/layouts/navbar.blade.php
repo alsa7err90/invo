@@ -18,22 +18,22 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li> 
-                            <a class="dropdown-item" href="#" >
+                            <a class="dropdown-item" href="{{ route('invitations.attentions') }}" >
                                 ارسال الدعوات
                             </a>
-                            <a class="dropdown-item" href="#" >
+                            <a class="dropdown-item" href="{{ route('invitations.public') }}" >
                              الدعوات العامة
                             </a>
-                            <a class="dropdown-item" href="#" >
+                            <a class="dropdown-item" href="{{ route('surnames.index') }}" >
                              الألقاب
                             </a>
-                            <a class="dropdown-item" href="#" >
+                            <a class="dropdown-item" href="{{ route('groups.index') }}" >
                              الفئات
                             </a>
-                            <a class="dropdown-item" href="#" >
+                            <a class="dropdown-item" href="{{ route('profile.index') }}" >
                              تعديل معلومات الدخول
                             </a>
-                            <a class="dropdown-item" href="#" >
+                            <a class="dropdown-item" href="{{ route('profile.create') }}" >
                              اضافة موظفين
                             </a>
                         </li>
@@ -47,16 +47,16 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li> 
-                            <a class="dropdown-item" href="#" >
+                            <a class="dropdown-item" href="{{ route('invitations.index') }}" >
                              جميع الدعوات
                             </a>
-                            <a class="dropdown-item" href="#" >
+                            <a class="dropdown-item" href="{{ route('tables.index') }}" >
                             الكراسي
                             </a>
-                            <a class="dropdown-item" href="#" >
+                            <a class="dropdown-item" href="{{ route('tables.empty') }}" >
                             الكراسي الفارغة
                             </a>
-                            <a class="dropdown-item" href="#" >
+                            <a class="dropdown-item" href="{{ route('tables.report') }}" >
                              تقارير الكراسي
                             </a>
                             
@@ -64,7 +64,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  mx-2" href="#">qrcode</a>
+                    <a class="nav-link  mx-2" href="{{ route('qrcode.index') }}">qrcode</a>
                 </li>
                 
                     

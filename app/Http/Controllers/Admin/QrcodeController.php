@@ -3,18 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Interfaces\TableRepositoryInterface;
 use Illuminate\Http\Request;
 
-class TableController extends Controller
+class QrcodeController extends Controller
 {
-    
-    protected $tableRepository;
-
-    public function __construct(TableRepositoryInterface $tableRepository)
-    {
-        $this->tableRepository = $tableRepository; 
-    }
     /**
      * Display a listing of the resource.
      *
@@ -87,17 +79,6 @@ class TableController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
-    }
-
-    public function empty()
-    {
-        //
-    }
-    
-
-    public function report()
     {
         //
     }
