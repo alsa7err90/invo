@@ -34,8 +34,7 @@ $(document).ready(function () {
 
     // add new  attentions
     $(search_attentions).on("submit", function (event) {
-        event.preventDefault();
-
+        event.preventDefault(); 
         var url = $(this).attr("data-action");
         $.ajax({
             url: url,

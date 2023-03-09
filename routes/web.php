@@ -43,6 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     // search
     Route::any('search/attentions', [SearchController::class, 'searchAttentions'])->name('search.attentions');
+    Route::any('search/public', [SearchController::class, 'searchPublic'])->name('search.public');
 
 
 });

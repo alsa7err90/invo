@@ -22,32 +22,33 @@
                                 </div>
                             </div>
                         </div>
-                        <form class="row g-3" id="search_attentions" method="post"  data-action="{{ route('search.attentions') }}">
+                        <form class="row g-3" id="search_attentions" method="post"
+                            data-action="{{ route('search.attentions') }}">
                             @csrf
                             <div class="col-auto">
-                              <label for="inputname" class="visually-hidden">الاسم </label>
-                              <input type="text" class="form-control" name="name" id="name" >
+                                <label for="inputname" >الاسم </label>
+                                <input type="text" class="form-control" name="name" id="name">
                             </div>
                             <div class="col-auto">
-                              <label for="email" class="visually-hidden">البريد الالكتروني</label>
-                              <input type="email" class="form-control" name="email" id="email" >
+                                <label for="email" >البريد الالكتروني</label>
+                                <input type="email" class="form-control" name="email" id="email">
                             </div>
                             <div class="col-auto">
-                              <label for="mobile" class="visually-hidden">رقم الجوال</label>
-                              <input type="text" class="form-control" name="mobile" id="mobile">
+                                <label for="mobile" >رقم الجوال</label>
+                                <input type="text" class="form-control" name="mobile" id="mobile">
                             </div>
                             <div class="col-auto">
-                                <label for="mobile" class="visually-hidden">تأكيد الحضور</label> 
-                                <select id="attend_confirm" class="form-select" name="attend_confirm" >
+                                <label for="mobile" >تأكيد الحضور</label>
+                                <select id="attend_confirm" class="form-select" name="attend_confirm">
                                     <option value="2">الكل</option>
                                     <option value="0">لا</option>
                                     <option value="1">نعم</option>
                                 </select>
-                              </div>
-                            <div class="col-auto">
-                              <button type="submit" class="btn btn-primary mb-3">بحث</button>
                             </div>
-                          </form>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary mb-3">بحث</button>
+                            </div>
+                        </form>
                         <table class="table table-striped table-hover" id="table_attentions">
                             <thead>
                                 <tr>
@@ -80,9 +81,10 @@
                                                     class="material-icons">&#xe8b6;</i></a>
                                             <a href="#" class="settings" title="طباعة" data-toggle="tooltip"><i
                                                     class="material-icons">&#xe8ad;</i></a>
-                                            <a href="#" class="settings" title="طباعة مع حلفية" data-toggle="tooltip"><i
-                                                class="material-icons text-success">&#xe8ad;</i></a>
-                                                                      
+                                            <a href="#" class="settings" title="طباعة مع حلفية"
+                                                data-toggle="tooltip"><i
+                                                    class="material-icons text-success">&#xe8ad;</i></a>
+
                                         </td>
                                     </tr>
                                 @empty
@@ -113,8 +115,8 @@
                             <div class="col-md-6">
                                 <p> اللقب</p>
                                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                    <input type="radio" class="btn-check" name="surname" id="surname1" autocomplete="off"
-                                        checked>
+                                    <input type="radio" class="btn-check" name="surname" id="surname1"
+                                        autocomplete="off" checked>
                                     <label class="btn btn-outline-primary" for="surname1">معالي</label>
 
                                     <input type="radio" class="btn-check" name="surname" id="surname2"
