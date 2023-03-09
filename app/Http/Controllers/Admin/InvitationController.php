@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AttentionsStoreRequest;
+use App\Http\Requests\PublicStoreRequest;
 use App\Interfaces\InvitationRepositoryInterface;
 use App\Models\Invitation;
 use Illuminate\Http\Request;
@@ -27,59 +28,21 @@ class InvitationController extends Controller
         return view('admin.invitations.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+     
+    public function store(PublicStoreRequest $request)
     {
         $invo =  $this->invitationRepository->storePublic($request);
-         
-        $is_out = "";
-        if($invo->is_out == 1) { $is_out = "خارجي"; }
-        $output  = '<tr>' .
-                    '<td>' . $invo->id . '</td>' .
-                    '<td>' . $invo->created_at . '</td>' .
-                    '<td>' . $invo->name . '</td>' .
-                    '<td>' . $invo->mobile . '</td>' .
-                    '<td>' . $invo->email . '</td>' .
-                    '<td>' . getStatus($invo->status) . '</td>' .
-                    '<td>' .  $is_out . '</td>' .
-                    '<td><input type="checkbox"></td>' .
-                    '<td><a href="#" class="settings" title="تحرير" data-toggle="tooltip"><i class="material-icons">&#xe3c9;</i></a> <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a> <a href="#" class="settings" title="استعراض" data-toggle="tooltip"><i class="material-icons">&#xe8b6;</i></a> <a href="#" class="settings" title="طباعة" data-toggle="tooltip"><i class="material-icons">&#xe8ad;</i></a><a href="#" class="settings" title="طباعة مع حلفية" data-toggle="tooltip"><iclass="material-icons text-success">&#xe8ad;</i></td>' .
-                    '</tr>';
+        $output =  $this->invitationRepository->getRow($invo); 
         return  $output ;  
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
         //

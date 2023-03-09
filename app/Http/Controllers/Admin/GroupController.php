@@ -3,39 +3,33 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Interfaces\GroupRepositoryInterface;
+use App\Models\Group;
 use Illuminate\Http\Request;
 
 class GroupController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+    protected $groupRepository;
+
+    public function __construct(GroupRepositoryInterface $groupRepository)
+    {
+        $this->groupRepository = $groupRepository; 
+    }
+
     public function index()
     {
-        //
+        
+       $groups = Group::paginate(10);
+       return   view('admin.groups.index',compact('groups'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+     
     public function store(Request $request)
-    {
-        //
+    { 
+        $invo =  $this->groupRepository->store($request);
+        $output =  $this->groupRepository->getRow($invo); 
+        return  $output ; 
     }
 
     /**

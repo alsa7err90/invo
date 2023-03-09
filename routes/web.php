@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\GroupController;
 use App\Http\Controllers\Admin\InvitationController;
 use App\Http\Controllers\Admin\SearchController;
 use App\Http\Controllers\Admin\SurnameController;
@@ -29,7 +30,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('invitations', InvitationController::class);
     Route::resource('surnames', SurnameController::class);
-    Route::resource('groups', SurnameController::class);
+    Route::resource('groups', GroupController::class);
     Route::resource('tables', TableController::class);
     Route::resource('profile', UserController::class);
     Route::resource('qrcode', QrcodeController::class);

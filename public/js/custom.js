@@ -1,6 +1,7 @@
 $(document).ready(function () {
     var form = "#send-invitation-form";
     var search_attentions = "#search_attentions";
+    var search_attentions = "#search_attentions";
     // add new  attentions
     $(form).on("submit", function (event) {
         event.preventDefault();
@@ -16,7 +17,7 @@ $(document).ready(function () {
             enctype: "multipart/form-data",
             success: function (response) {
                 console.log(response);
-                $("#table_attentions tbody").prepend(response);
+                $("table tbody").prepend(response);
             },
             error: function (xhr, textStatus, error) {
                 console.log(xhr.statusText);
@@ -63,3 +64,5 @@ $(document).ready(function () {
         });
     });
 });
+
+

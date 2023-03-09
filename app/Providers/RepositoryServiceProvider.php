@@ -26,7 +26,9 @@ class RepositoryServiceProvider extends ServiceProvider
         $models = array(
             "Meet",
             "Invitation",
-            "Table"
+            "Table",
+            "Surname",
+            "Group"
         );
 
         foreach ($models as $model) {

@@ -197,4 +197,7 @@ table.table .avatar {
 
 
 
-/* modal */
+ /* colors */
+ .clr-picker{
+    z-index: 9999999 !important;
+ }

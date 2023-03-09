@@ -21,4 +21,18 @@ function getStatus($status)
 } // end  1
 
 
+function getStatusLang($status)
+{
+  switch ($status) {
+    case 0:  
+      return "انكليزي"; 
+    case 1:
+    return "عربي";
+    
+    default:
+      
+      break;
+  }
+} // end  1
+
  
