@@ -16,7 +16,7 @@ class SearchController extends Controller
         if ($request->name) $invos->where('name', 'LIKE', '%' . $request->name . "%");
         if ($request->email) $invos->where('email', 'LIKE', '%' . $request->email . "%");
         if ($request->mobile) $invos->where('mobile', 'LIKE', '%' . $request->mobile . "%");
-        if($request->attend_confirm && $request->attend_confirm !==  2  ) $invos->where('attend_confirm', $request->attend_confirm);  
+        if(isset($request->attend_confirm) && $request->attend_confirm !==  2  ) $invos->where('attend_confirm', $request->attend_confirm);  
  
         $invoss =  $invos->get();
         if ($invoss->count() > 0) {
