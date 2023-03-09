@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\InvitationController;
+use App\Http\Controllers\Admin\SearchController;
 use App\Http\Controllers\Admin\SurnameController;
 use App\Http\Controllers\Admin\TableController;
 use Illuminate\Support\Facades\Route;
@@ -35,8 +36,13 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('invitation/attentions', [InvitationController::class, 'attentions'])->name('invitations.attentions');
     Route::post('send/attentions', [InvitationController::class, 'sendAttentions'])->name('send.attentions');
-
+   
     Route::get('invitation/public', [InvitationController::class, 'public'])->name('invitations.public');
     Route::get('table/empty', [TableController::class, 'empty'])->name('tables.empty');
     Route::get('table/report', [TableController::class, 'report'])->name('tables.report');
+
+    // search
+    Route::any('search/attentions', [SearchController::class, 'searchAttentions'])->name('search.attentions');
+
+
 });

@@ -22,6 +22,32 @@
                                 </div>
                             </div>
                         </div>
+                        <form class="row g-3" id="search_attentions" method="post"  data-action="{{ route('search.attentions') }}">
+                            @csrf
+                            <div class="col-auto">
+                              <label for="inputname" class="visually-hidden">الاسم </label>
+                              <input type="text" class="form-control" name="name" id="name" >
+                            </div>
+                            <div class="col-auto">
+                              <label for="email" class="visually-hidden">البريد الالكتروني</label>
+                              <input type="email" class="form-control" name="email" id="email" >
+                            </div>
+                            <div class="col-auto">
+                              <label for="mobile" class="visually-hidden">رقم الجوال</label>
+                              <input type="text" class="form-control" name="mobile" id="mobile">
+                            </div>
+                            <div class="col-auto">
+                                <label for="mobile" class="visually-hidden">تأكيد الحضور</label> 
+                                <select id="attend_confirm" class="form-select" name="attend_confirm" >
+                                    <option value="2">الكل</option>
+                                    <option value="0">لا</option>
+                                    <option value="1">نعم</option>
+                                </select>
+                              </div>
+                            <div class="col-auto">
+                              <button type="submit" class="btn btn-primary mb-3">بحث</button>
+                            </div>
+                          </form>
                         <table class="table table-striped table-hover" id="table_attentions">
                             <thead>
                                 <tr>
