@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AttentionsStoreRequest;
 use App\Interfaces\InvitationRepositoryInterface;
+use App\Models\Invitation;
 use Illuminate\Http\Request;
+use Response;
 
 class InvitationController extends Controller
 {
@@ -91,13 +94,21 @@ class InvitationController extends Controller
     }
 
     public function attentions(){
-       
-        return view('admin.invitations.attentions');
+       $invos =  Invitation::where('is_attentions',1)->get();
+        return view('admin.invitations.attentions',compact('invos'));
     }
 
     public function public(){
        
         return view('admin.invitations.public');
     }
+    
+    public function sendAttentions(AttentionsStoreRequest $request){
+       
+        $invo =  $this->invitationRepository->storeAttentions($request);
+        return Response::json($invo);  
+
+    }
+    
     
 }

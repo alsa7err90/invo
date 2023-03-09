@@ -33,9 +33,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('profile', UserController::class);
     Route::resource('qrcode', QrcodeController::class);
 
-    Route::get('invitation/attentions', [InvitationController::class,'attentions'])->name('invitations.attentions');
-    Route::get('invitation/public', [InvitationController::class,'public'])->name('invitations.public');
-    Route::get('table/empty', [TableController::class,'empty'])->name('tables.empty');
-    Route::get('table/report', [TableController::class,'report'])->name('tables.report');
+    Route::get('invitation/attentions', [InvitationController::class, 'attentions'])->name('invitations.attentions');
+    Route::post('send/attentions', [InvitationController::class, 'sendAttentions'])->name('send.attentions');
 
+    Route::get('invitation/public', [InvitationController::class, 'public'])->name('invitations.public');
+    Route::get('table/empty', [TableController::class, 'empty'])->name('tables.empty');
+    Route::get('table/report', [TableController::class, 'report'])->name('tables.report');
 });

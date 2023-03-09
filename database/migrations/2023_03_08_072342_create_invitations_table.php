@@ -28,11 +28,15 @@ class CreateInvitationsTable extends Migration
             $table->enum('send_email',[0,1])->default(0);
             $table->enum('send_whatsapp',[0,1])->default(0);
             $table->enum('attend_confirm',[0,1])->default(0);
+            $table->enum('attend',[0,1])->default(0);
             $table->enum('is_out',[0,1])->default(0);
-            $table->enum('lang',["ar","en"]); 
+            $table->enum('lang',[1,0])->default(0);
             $table->enum('status',[0,1])->default(0);
-            $table->string('status_text');
-            $table->string('qrcode');
+            $table->enum('is_attentions',[0,1])->default(0);
+            $table->string('status_text')->nullable();
+            $table->string('qrcode')->nullable();
+            $table->string('seatcode')->nullable(); 
+            $table->string('seattype')->nullable();  
             $table->string('note')->nullable();
             $table->timestamps();
             

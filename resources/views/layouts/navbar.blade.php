@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm navbar-light" id="neubar">
     <div class="container">
-        <a class="navbar-brand" href="#"><img src="/static_files/images/logos/logo_2.png"
+        <a class="navbar-brand" href="#"><img src="{{ asset('logo.png') }}"
                 height="60" /></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
