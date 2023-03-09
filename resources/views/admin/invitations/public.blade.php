@@ -22,7 +22,7 @@
                                 </div>
                             </div>
                         </div>
-                        <form id="search_attentions" method="post" data-action="{{ route('search.attentions') }}">
+                        <form id="search_attentions" method="post" data-action="{{ route('search.public') }}">
                             @csrf
                             <div class="row g-3">
                                 <div class="col-auto">
@@ -39,17 +39,18 @@
                                 </div>
                                 <div class="col-auto">
                                     <label for="mobile">الفئة</label>
-                                    <select id="attend_confirm" class="form-select" name="attend_confirm">
-                                        <option value="2">الكل</option>
-                                        <option value="0">لا</option>
-                                        <option value="1">نعم</option>
+                                    <select id="group" class="form-select" name="group">
+                                        <option value>الكل</option>
+                                         
                                     </select>
                                 </div>
                             </div>
                             <div class="row g-3">
                                 <div class="col-auto">
                                     <label for="mobile">حالة الطلب</label>
-                                    <select id="attend_confirm" class="form-select" name="attend_confirm">
+                                    <select id="status" class="form-select" name="status">
+                                        
+                                        <option value>الكل</option>
                                         <option value="1">قيد الدراسة</option>
                                         <option value="2">تم التأكيد</option>
                                         <option value="3">تم الاعتذار</option>
@@ -58,9 +59,9 @@
                                 <div class="col-auto">
                                     <label for="mobile">داخلي / خارجي</label>
                                     <select id="is_out" class="form-select" name="is_out">
-                                        <option value="2">الكل</option>
-                                        <option value="0">لا</option>
-                                        <option value="1">نعم</option>
+                                        <option value>الكل</option>
+                                        <option value="0">داخلي</option>
+                                        <option value="1">خارجي</option>
                                     </select>
                                 </div>
 
@@ -94,7 +95,7 @@
                                         <td>{{ $invo->mobile }}</td>
                                         <td>{{ $invo->email }}</td>
                                         <td>{{ getStatus($invo->status) }}</td>
-                                        <td>{{  $invo->is_out ? "خارجي" :""  }}</td> 
+                                        <td>{{  $invo->is_out == 1 ? "خارجي" :""  }}</td> 
                                         <td> <input type="checkbox"></td>
                                         <td>
                                             <a href="#" class="settings" title="تحرير" data-toggle="tooltip"><i

@@ -48,7 +48,7 @@ class InvitationController extends Controller
         $invo =  $this->invitationRepository->storePublic($request);
          
         $is_out = "";
-        if($invo->is_out) { $is_out = "خارجي"; }
+        if($invo->is_out == 1) { $is_out = "خارجي"; }
         $output  = '<tr>' .
                     '<td>' . $invo->id . '</td>' .
                     '<td>' . $invo->created_at . '</td>' .
