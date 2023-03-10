@@ -30,10 +30,10 @@
                             <a class="dropdown-item" href="{{ route('groups.index') }}" >
                              الفئات
                             </a>
-                            <a class="dropdown-item" href="{{ route('profile.index') }}" >
+                            <a class="dropdown-item" href="{{ route('profile.myProfile') }}" >
                              تعديل معلومات الدخول
                             </a>
-                            <a class="dropdown-item" href="{{ route('profile.create') }}" >
+                            <a class="dropdown-item" href="{{ route('users.index') }}" >
                              اضافة موظفين
                             </a>
                         </li>

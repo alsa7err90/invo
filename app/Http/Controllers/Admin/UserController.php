@@ -3,15 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateUserRequest;
+use App\Interfaces\UserRepositoryInterface;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    protected $userRepository;
+
+    public function __construct(UserRepositoryInterface $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
     public function index()
     {
         //
@@ -38,48 +43,45 @@ class UserController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
+    }
+
+
+    public function myProfile()
+    {
+        return view('admin.profile.myprofile');
+    }
+
+    public function updateMyProfile(UpdateUserRequest $request)
+    {
+
+        $checkPassword = $this->userRepository->checkMatch($request->password, $request->password2);
+        if (!$checkPassword)  return redirect()->back()->with('error2', "كلمات السر غير متطابقة");
+
+        $checkEmail = $this->userRepository->checkMatch($request->password, $request->password2);
+        if (!$checkEmail)  return redirect()->back()->with('error2', "الايميلات  غير متطابقة");
+
+        $update = $this->userRepository->update($request, auth()->user()->id);
+        if ($update) {
+            return redirect()->back()->with('message', 'تم حفظ الملف الشخصي بنجاح');
+        }
+        return redirect()->back()->with('message', 'حدث خطأ غير متوقع ');
     }
 }

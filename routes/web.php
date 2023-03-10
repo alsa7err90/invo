@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\InvitationController;
 use App\Http\Controllers\Admin\SearchController;
 use App\Http\Controllers\Admin\SurnameController;
 use App\Http\Controllers\Admin\TableController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,9 +33,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('surnames', SurnameController::class);
     Route::resource('groups', GroupController::class);
     Route::resource('tables', TableController::class);
-    Route::resource('profile', UserController::class);
+    Route::resource('users', UserController::class);
     Route::resource('qrcode', QrcodeController::class);
-
+    
+    Route::get('profile/myProfile', [UserController::class, 'myProfile'])->name('profile.myProfile');
+    Route::post('profile/updateMyProfile', [UserController::class, 'updateMyProfile'])->name('profile.updateMyProfile');
+   
     Route::get('invitation/attentions', [InvitationController::class, 'attentions'])->name('invitations.attentions');
     Route::post('send/attentions', [InvitationController::class, 'sendAttentions'])->name('send.attentions');
    
