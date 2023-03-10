@@ -25,7 +25,8 @@ class InvitationController extends Controller
      */
     public function index()
     {
-        return view('admin.invitations.index');
+        $invos = Invitation::get();
+        return view('admin.invitations.index',compact('invos'));
     }
 
      

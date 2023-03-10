@@ -41,7 +41,11 @@
                                     <label for="mobile">الفئة</label>
                                     <select id="group" class="form-select" name="group">
                                         <option value>الكل</option>
-                                         
+                                        @forelse ( $list_groups as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        @empty
+                                            
+                                        @endforelse
                                     </select>
                                 </div>
                             </div>

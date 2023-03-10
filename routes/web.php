@@ -46,9 +46,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('table/empty', [TableController::class, 'empty'])->name('tables.empty');
     Route::get('table/report', [TableController::class, 'report'])->name('tables.report');
 
-    // search
+    // search invitation
     Route::any('search/attentions', [SearchController::class, 'searchAttentions'])->name('search.attentions');
     Route::any('search/public', [SearchController::class, 'searchPublic'])->name('search.public');
+    Route::any('search/all', [SearchController::class, 'searchAll'])->name('search.all');
 
 
 });

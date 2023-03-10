@@ -22,7 +22,7 @@ class CreateInvitationsTable extends Migration
             $table->string('side')->nullable();
             $table->string('mobile')->nullable();
             $table->string('position')->nullable();
-            $table->text('group')->nullable();
+            $table->bigInteger('group_id')->nullable();
             $table->string('surname')->nullable();
             $table->string('surname2')->nullable();
             $table->enum('send_email',[0,1])->default(0)->comment('0=no , 1=yes');;
@@ -36,7 +36,7 @@ class CreateInvitationsTable extends Migration
             $table->string('status_text')->nullable();
             $table->string('qrcode')->nullable();
             $table->string('seatcode')->nullable(); 
-            $table->string('seattype')->nullable();  
+            $table->string('seattype')->default('empty');  
             $table->string('note')->nullable();
             $table->timestamps();
             

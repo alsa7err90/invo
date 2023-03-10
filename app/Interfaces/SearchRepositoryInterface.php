@@ -6,6 +6,8 @@ interface SearchRepositoryInterface{
     public function searchPublic($request);
     public function getRowAttentions($val);
     public function getRowPublic($val);
+    public function searchAll($val);
+    public function getRowAll($val);
     
 }
  

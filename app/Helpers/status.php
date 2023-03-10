@@ -36,12 +36,39 @@ function getStatusLang($status)
       
       break;
   }
-} // end  1
+} // end  2
 
- 
+//  3 
 function quickRandom($length = 16)
 {
   $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
   return substr(str_shuffle(str_repeat($pool, 5)), 0, $length);
 }
 
+// 4
+function getStatusAttentions($status){
+  switch ($status) {
+    case 0:  
+      return "دعوة"; 
+    case 1:
+    return "تسجيل";
+    
+    default:
+      
+      break;
+  }
+}
+
+// 5 
+function getStatusAttend($status){
+  switch ($status) {
+    case 0:  
+      return '<i class="fa fa-times" aria-hidden="true"></i>'; 
+    case 1:
+    return '<i class="fa fa-check" aria-hidden="true"></i>'; 
+    
+    default:
+      
+      break;
+  }
+}

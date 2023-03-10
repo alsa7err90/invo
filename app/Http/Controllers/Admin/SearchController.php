@@ -29,4 +29,12 @@ class SearchController extends Controller
         $output =  $this->searchRepository->getRowPublic($invos);
         return $output;
     }
+
+    public function searchAll(Request $request)
+    {
+        $invos =  $this->searchRepository->searchAll($request);
+        $output =  $this->searchRepository->getRowAll($invos);
+        return $output;
+    }
+    
 }
