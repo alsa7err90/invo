@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Interfaces\TableRepositoryInterface;
+use App\Models\Table;
 use Illuminate\Http\Request;
 
 class TableController extends Controller
@@ -14,36 +15,19 @@ class TableController extends Controller
     public function __construct(TableRepositoryInterface $tableRepository)
     {
         $this->tableRepository = $tableRepository; 
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    } 
     public function index()
     {
-        //
+        $tables = Table::paginate(10);
+        return   view('admin.tables.index',compact('tables'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+     
     public function store(Request $request)
     {
-        //
+        $table = $this->tableRepository->store($request);
+        $output = $this->tableRepository->getRow($table); 
+        return  $output ;  
     }
 
     /**
@@ -93,7 +77,8 @@ class TableController extends Controller
 
     public function empty()
     {
-        //
+        $tables = Table::whereNull('invitation')->paginate(10);
+        return view('admin.tables.index',compact('tables'));
     }
     
 

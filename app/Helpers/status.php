@@ -72,3 +72,17 @@ function getStatusAttend($status){
       break;
   }
 }
+
+// 6 
+function getStatusTable($status){
+  switch ($status) {
+    case 0:  
+      return 'فارغ'; 
+    case 1:
+    return 'مشغول'; 
+    
+    default:
+      
+      break;
+  }
+}

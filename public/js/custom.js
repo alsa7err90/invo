@@ -1,9 +1,8 @@
 $(document).ready(function () {
-    var form = "#send-invitation-form";
-    var search_attentions = "#search_attentions";
-    var search_attentions = "#search_attentions";
-    // add new  attentions
-    $(form).on("submit", function (event) {
+    var form_ajax_post = "#form_ajax_post";
+    var form_ajax_post_search = "#form_ajax_post_search";
+     
+    $(form_ajax_post).on("submit", function (event) {
         event.preventDefault();
 
         var url = $(this).attr("data-action");
@@ -18,6 +17,9 @@ $(document).ready(function () {
             success: function (response) {
                 console.log(response);
                 $("table tbody").prepend(response);
+                $('input').val('');
+                $('select').val('');
+                alert("تمت الاضافة بنجاح");
             },
             error: function (xhr, textStatus, error) {
                 console.log(xhr.statusText);
@@ -34,7 +36,7 @@ $(document).ready(function () {
     });
 
     // add new  attentions
-    $(search_attentions).on("submit", function (event) {
+    $(form_ajax_post_search).on("submit", function (event) {
         event.preventDefault(); 
         var url = $(this).attr("data-action");
         $.ajax({

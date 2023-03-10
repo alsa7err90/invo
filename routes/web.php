@@ -50,6 +50,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::any('search/attentions', [SearchController::class, 'searchAttentions'])->name('search.attentions');
     Route::any('search/public', [SearchController::class, 'searchPublic'])->name('search.public');
     Route::any('search/all', [SearchController::class, 'searchAll'])->name('search.all');
+   
+    Route::any('search/table', [SearchController::class, 'searchTable'])->name('search.table');
 
 
 });

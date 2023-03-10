@@ -17,13 +17,44 @@
                                 </div>
                             </div>
                         </div>
+                        <form class="row g-3" id="form_ajax_post_search" method="post"
+                            data-action="{{ route('search.table') }}">
+                            @csrf
+                            <div class="col-auto">
+                                <label for="inputname">الاسم </label>
+                                <input type="text" class="form-control" name="name" id="name">
+                            </div>
 
+
+                            <div class="col-auto">
+                                <label for="mobile">فئة الكرسي</label>
+                                <select id="type" class="form-select" name="type">
+                                    <option value>الكل</option>
+                                    <option value="vip">vip</option>
+                                    <option value="normal">عادي</option>
+                                    <option value="empty">لم يتم التعيين</option>
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <label for="mobile">حالة الكرسي</label>
+                                <select id="state" class="form-select" name="state">
+                                    <option value>الكل</option>
+                                    <option value="1">محجوز</option>
+                                    <option value="0">فارغ</option> 
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary mb-3">بحث</button>
+                            </div>
+                        </form>
                         <table class="table table-striped table-hover" id="table_attentions">
                             <thead>
                                 <tr>
                                     <th>م</th>
-                                    <th>الاسم</th>
-                                    <th>البريد الالكتروني </th>
+                                    <th>رمز الكرسي</th>
+                                    <th>المدعو </th>
+                                    <th>فئة الكرسي </th>
+                                    <th>حالة الكرسي </th>
 
                                     <th><input type="checkbox" /></th>
                                     <th>action</th>
@@ -31,19 +62,22 @@
                             </thead>
                             <tbody>
 
-                                @forelse ($users as $item)
+                                @forelse ($tables as $item)
                                     <tr>
-                                        <td>{{ $item->id }}</td> 
-                                        <td>{{ $item->nickname }}</td> 
-                                        <td>{{ $item->email }}</td>
+                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $item->code }}</td>
+                                        <td>{{ getUsernameById($item->invitation) }}</td>
+                                        <td>{{ $item->type }}</td>
+                                        <td>{{ getStatusTable($item->status) }}</td>
                                         <td> <input type="checkbox"></td>
                                         <td>
                                             <a href="#" class="settings" title="تحرير" data-toggle="tooltip"><i
                                                     class="material-icons">&#xe3c9;</i></a>
                                             <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i
                                                     class="material-icons">&#xE5C9;</i></a>
-                                                    <a href="#" class="delete" title="Delete" data-toggle="tooltip"> الصلاحيات</a>
-    
+                                            <a href="#" data-toggle="tooltip">
+                                                سجل التغييرات
+                                            </a>
                                         </td>
                                     </tr>
                                 @empty
@@ -68,47 +102,38 @@
                 </div>
                 <div class="modal-body">
                     <form method="post" id="form_ajax_post" class="fabrikForm"
-                        data-action="{{ route('users.store') }}">
+                        data-action="{{ route('tables.store') }}" enctype="application/x-www-form-urlencoded">
                         @csrf
-                        
+
                         <div class="row g-3 align-items-center p-2">
                             <div class="col-3">
-                                <label for="nickname" class="col-form-label">اسم الموظف</label>
+                                <label for="code" class="col-form-label">رمز الكرسي </label>
                             </div>
                             <div class="col-4">
-                                <input type="text" name="nickname" id="nickname"class="form-control" > 
+                                <input type="text" name="code" id="code"class="form-control">
                             </div>
                         </div>
 
-                        
                         <div class="row g-3 align-items-center p-2">
                             <div class="col-3">
-                                <label for="email" class="col-form-label">البريد الالكتروني</label>
+                                <label for="code" class="col-form-label">نوع الكرسي</label>
                             </div>
                             <div class="col-4">
-                                <input type="email" name="email" id="email"class="form-control" > 
-                            </div>
-                        </div>
-
-
-                        
-                        <div class="row g-3 align-items-center p-2">
-                            <div class="col-3">
-                                <label for="password" class="col-form-label">كلمة السر</label>
-                            </div>
-                            <div class="col-4">
-                                <input type="password" name="password" id="password"class="form-control" > 
+                                <select name="type">
+                                    <option value>غير محدد</option>
+                                    <option value="vip">vip</option>
+                                    <option value="normal">عادي</option>
+                                </select>
                             </div>
                         </div>
 
 
-                        
                         <div class="row g-3 align-items-center p-2">
                             <div class="col-3">
-                                <label for="password2" class="col-form-label">تأكيد كلمة السر</label>
+                                <label for="image" class="col-form-label">صورة لموقع الكرسي</label>
                             </div>
                             <div class="col-4">
-                                <input type="password" name="password2" id="password2"class="form-control" > 
+                                <input type="file" name="image" id="image"class="form-control">
                             </div>
                         </div>
 

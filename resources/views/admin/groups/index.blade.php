@@ -31,13 +31,13 @@
                             </thead>
                             <tbody>
 
-                                @forelse ($groups as $name)
+                                @forelse ($groups as $item)
                                     <tr>
-                                        <td>{{ $name->id }}</td>
+                                        <td>{{ $item->id }}</td>
                                         <td>
-                                            <div style="width:15px;height:15px;background-color:{{ $name->color }}"></div>
+                                            <div style="width:15px;height:15px;background-color:{{ $item->color }}"></div>
                                         </td>
-                                        <td>{{ $name->name }}</td>
+                                        <td>{{ $item->name }}</td>
 
 
                                         <td> <input type="checkbox"></td>
@@ -70,7 +70,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" id="send-invitation-form" class="fabrikForm"
+                    <form method="post" id="form_ajax_post" class="fabrikForm"
                         data-action="{{ route('groups.store') }}">
                         @csrf
                         <div class="row">

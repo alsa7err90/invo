@@ -22,7 +22,7 @@
                                 </div>
                             </div>
                         </div>
-                        <form id="search_attentions" method="post" data-action="{{ route('search.public') }}">
+                        <form id="form_ajax_post_search" method="post" data-action="{{ route('search.public') }}">
                             @csrf
                             <div class="row g-3">
                                 <div class="col-auto">
@@ -137,7 +137,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" id="send-invitation-form" class="fabrikForm"
+                    <form method="post" id="form_ajax_post" class="fabrikForm"
                         data-action="{{ route('invitations.store') }}" enctype="application/x-www-form-urlencoded">
                         @csrf
                         <div class="row">

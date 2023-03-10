@@ -8,6 +8,8 @@ interface SearchRepositoryInterface{
     public function getRowPublic($val);
     public function searchAll($val);
     public function getRowAll($val);
+    public function searchTable($val);
+    public function getRowTable($val);
     
 }
  

@@ -36,5 +36,13 @@ class SearchController extends Controller
         $output =  $this->searchRepository->getRowAll($invos);
         return $output;
     }
+
+    public function searchTable(Request $request)
+    {
+        $invos =  $this->searchRepository->searchTable($request);
+        $output =  $this->searchRepository->getRowTable($invos);
+        return $output;
+    }
+    
     
 }

@@ -67,7 +67,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" id="send-invitation-form" class="fabrikForm"
+                    <form method="post" id="form_ajax_post" class="fabrikForm"
                         data-action="{{ route('surnames.store') }}">
                         @csrf
                         <div class="row">
