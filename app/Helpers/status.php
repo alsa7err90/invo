@@ -1,6 +1,9 @@
 <?php
 
 // 1 - discFeeFromAmount
+// 2 - getStatusLang
+// 3 - quickRandom
+
  
 // 1 
  
@@ -20,7 +23,7 @@ function getStatus($status)
   }
 } // end  1
 
-
+// 2 
 function getStatusLang($status)
 {
   switch ($status) {
@@ -36,3 +39,9 @@ function getStatusLang($status)
 } // end  1
 
  
+function quickRandom($length = 16)
+{
+  $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
+  return substr(str_shuffle(str_repeat($pool, 5)), 0, $length);
+}
+
