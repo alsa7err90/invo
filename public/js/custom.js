@@ -5,6 +5,7 @@
 // 5 - set url for form delete invitation
 // 6 - delete invitation
 // 7 - get a invitation and put it in model
+// 8 - editGroup
 
 
 $(document).ready(function () {
@@ -13,9 +14,7 @@ $(document).ready(function () {
     var form_ajax_post_edit = "#form_ajax_post_edit";
 // 1
     $(form_ajax_post).on("submit", function (event) {
-        event.preventDefault();
-        alert(url);
-
+        event.preventDefault();  
         var url = $(this).attr("data-action");
         $.ajax({
             url: url,
@@ -32,7 +31,7 @@ $(document).ready(function () {
                 $("select").val("");
 
                 $("#modal_edit_public .btn-close").click();
-                $("#exampleModal .btn-close").click();
+                $("#addModal .btn-close").click();
                 alert("تمت الاضافة بنجاح");
             },
             error: function (xhr, textStatus, error) {
@@ -70,7 +69,7 @@ $(document).ready(function () {
                 $("select").val("");
 
                 $("#modal_edit_public .btn-close").click();
-                $("#exampleModal .btn-close").click();
+                $("#addModal .btn-close").click();
                 alert("تمت الاضافة بنجاح");
             },
             error: function (xhr, textStatus, error) {
@@ -102,7 +101,7 @@ $(document).ready(function () {
             success: function (response) {
                 console.log(response);
                 $("#modal_edit_public .btn-close").click();
-                $("#exampleModal .btn-close").click();
+                $("#addModal .btn-close").click();
                 $("#table_attentions tbody").html(response);
             },
             error: function (xhr, textStatus, error) {
@@ -228,5 +227,39 @@ $(document).ready(function () {
             });
         });
     });
+
+    //  8 
+    $("body").on("click", "#editGroup", function (event) {
+        event.preventDefault();
+        var id = $(this).data("id");
+        var url = $(this).attr("href");
+        var url_update = url.replace("/edit", "");
+        $.ajax({
+            url: url,
+            method: "get",
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function (response) {
+                console.log(response);
+                 $("#form_ajax_post_edit input[name=name]").val(response.name);
+                $("#form_ajax_post_edit input[name=color]").attr('value',response.email);
+                $("#form_ajax_post_edit").attr("data-action", url_update);
+                $("#form_ajax_post_edit").attr("data-id", id);
+            },
+            error: function (xhr, textStatus, error) {
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+            },
+        }).fail(function (data) {
+            var response = JSON.parse(data.responseText);
+
+            $.each(response.errors, function (key, value) {
+                alert(value);
+            });
+        });
+    });
+    // end 4
 
 });

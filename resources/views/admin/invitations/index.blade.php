@@ -43,7 +43,7 @@
                             <tbody>
 
                                 @forelse ($invos as $invo)
-                                    <tr>
+                                    <tr  class="{{ $invo->id }}">
                                         <td>{{ $invo->id }}</td>
                                         <td>{{ $invo->created_at->format('Y-m-d H:m:s') }}</td>
                                         <td>{{ $invo->name }}</td>
