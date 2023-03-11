@@ -7,30 +7,23 @@
             <div class="container-xl">
                 <div class="table-responsive">
                     <div class="table-wrapper">
-                       <x-other.title target="addModal" >
-                        <x-slot name="title"> جميع الدعوات </x-slot>
-                       </x-other.title>
-                        <form id="form_ajax_post_search" method="post" data-action="{{ route('search.all') }}">
-                            @csrf
-                            <div class="row ">
-                                <x-inputs.fullname className="col-md-3" />
-                                <x-inputs.email className="col-md-3" />
-                                <x-inputs.seattype className="col-md-3" /> 
-                            </div>
-                            <div class="row ">
-                                <x-inputs.mobile className="col-md-3" />
-                                <x-inputs.status className="col-md-3" />
-                                <x-inputs.is_attentions className="col-md-3" />
-
-                            </div>
-                            <div class="row ">
-                                <x-inputs.group className="col-md-3" />
-                                <x-inputs.is_out className="col-md-3" /> 
-                                <x-buttons.submit className="col-md-3" />
-                            </div>
-                        </form> 
-                       <x-alert.success />
-                       <x-alert.error /> 
+                        <x-other.title target="addModal">
+                            <x-slot name="title"> جميع الدعوات </x-slot>
+                        </x-other.title>
+                        <form  class="row g-3" id="form_ajax_post_search" method="post" data-action="{{ route('search.all') }}">
+                            @csrf 
+                            <x-inputs.fullname className="col-md-3" />
+                            <x-inputs.email className="col-md-3" />
+                            <x-inputs.seattype className="col-md-3" /> 
+                            <x-inputs.mobile className="col-md-3" />
+                            <x-inputs.status className="col-md-3" />
+                            <x-inputs.is_attentions className="col-md-3" />
+                            <x-inputs.group className="col-md-3" />
+                            <x-inputs.is_out className="col-md-3" />
+                            <x-buttons.submit className="col-md-3" /> 
+                        </form>
+                        <x-alert.success />
+                        <x-alert.error />
                         <table class="table table-striped table-hover" id="table_attentions">
                             <thead>
                                 <tr>
@@ -53,7 +46,7 @@
                                     <tr>
                                         <td>{{ $invo->id }}</td>
                                         <td>{{ $invo->created_at->format('Y-m-d H:m:s') }}</td>
-                                        <td>{{ $invo->name }}</td> 
+                                        <td>{{ $invo->name }}</td>
                                         <td>{{ $invo->mobile }}</td>
                                         <td>{{ $invo->email }}</td>
                                         <td>{{ getStatusAttentions($invo->is_attentions) }}</td>

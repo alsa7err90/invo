@@ -1,7 +1,4 @@
 <div class="{{ $className }}">
-    <p>
-        المنصب</p>
-    <input class="form-control" name="position" type="text"
-        aria-label="default input example">
-
+    <label for="mobile">المنصب</label>
+    <input class="form-control" name="position" type="text" aria-label="default input example">
 </div>

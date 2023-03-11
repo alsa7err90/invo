@@ -1,5 +1,5 @@
-<div class="{{ $className }}">
-    <p> اللقب</p>
+<div class="{{ $className }}"> 
+    <label for="mobile">اللقب</label>
     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
         <input type="radio" class="btn-check" name="surname" id="surname1" autocomplete="off"
             checked>

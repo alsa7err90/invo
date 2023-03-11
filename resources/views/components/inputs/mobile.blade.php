@@ -1,6 +1,5 @@
-<div class="{{ $className }}">
-    <p> رقم الواتس آب</p>
+<div class="{{ $className }}"> 
+    <label for="mobile">رقم الجوال</label>
     <input class="form-control" name="mobile" type="text"
-        aria-label="default input example">
-
+        aria-label="default input example"> 
 </div>

@@ -10,17 +10,16 @@
                         <x-other.title target="addModal">
                             <x-slot name="title"> الدعوات العامة </x-slot>
                         </x-other.title>
-                        <form id="form_ajax_post_search" method="post" data-action="{{ route('search.public') }}">
-                            @csrf
-                            <div class="row g-3">
-                                <x-inputs.fullname className="col-md-3" />
-                                <x-inputs.email className="col-md-3" />
-                                <x-inputs.mobile className="col-md-3" />
-                                <x-inputs.group className="col-md-3" />
-                                <x-inputs.status className="col-md-3" />
-                                <x-inputs.is_out className="col-md-3" />
-                                <x-buttons.submit className="col-md-3" />
-                            </div>
+                        <form class="row g-3" id="form_ajax_post_search" method="post"
+                            data-action="{{ route('search.public') }}">
+                            @csrf 
+                            <x-inputs.fullname className="col-md-3" />
+                            <x-inputs.email className="col-md-3" />
+                            <x-inputs.mobile className="col-md-3" />
+                            <x-inputs.group className="col-md-3" />
+                            <x-inputs.status className="col-md-3" />
+                            <x-inputs.is_out className="col-md-3" />
+                            <x-buttons.submit className="col-md-3" /> 
                         </form>
                         <x-alert.success />
                         <x-alert.error />

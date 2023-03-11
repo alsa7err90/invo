@@ -1,3 +1,3 @@
-<div class="{{ $className }}">
+<div class="{{ $className }} mt-4"  >
     <button type="submit" class="btn btn-primary mb-3">بحث</button>
 </div>

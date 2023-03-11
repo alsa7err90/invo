@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center"> 
+        <div class="row justify-content-center">
             <div class="container-xl">
                 <div class="table-responsive">
                     <div class="table-wrapper">
@@ -16,8 +16,7 @@
                             <x-inputs.email className="col-md-3" />
                             <x-inputs.mobile className="col-md-3" />
                             <x-inputs.attend_confirm className="col-md-3" />
-                            <x-buttons.submit className="col-md-3" />
-
+                            <x-buttons.submit className="col-md-3" /> 
                         </form>
 
                         <x-alert.success />
