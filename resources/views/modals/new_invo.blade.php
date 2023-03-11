@@ -17,37 +17,37 @@ $route = \Request::route()->getName();
                     data-action="{{ route('invitations.store') }}" enctype="application/x-www-form-urlencoded">
                     @csrf
                     <div class="row">
-                        <x-inputs.radio_group />
-                        <x-inputs.radio_group2 />
-                        <x-inputs.fullname />
-                        <x-inputs.email />
+                        <x-inputs.radio_group  className="col-6"/>
+                        <x-inputs.radio_group2  className="col-6"/>
+                        <x-inputs.fullname className="col-6"/>
+                        <x-inputs.email  className="col-6"/>
 
-                        <x-inputs.email2 />
-                        <x-inputs.side />
+                        <x-inputs.email2  className="col-6"/>
+                        <x-inputs.side  className="col-6"/>
 
                         @if ($route == 'invitations.attentions')
-                            <x-inputs.mobile />
+                            <x-inputs.mobile className="col-6" />
                         @endif
-                        <x-inputs.position />
+                        <x-inputs.position className="col-6" />
 
-                        <x-inputs.group />
+                        <x-inputs.group  className="col-6"/>
 
                         @if ($route == 'invitations.public')
-                            <x-inputs.send_email_with_change_status />
+                            <x-inputs.send_email_with_change_status className="col-6" />
                         @endif
 
                         @if ($route != 'invitations.attentions')
-                            <x-inputs.attend />
-                            <x-inputs.attend_confirm />
+                            <x-inputs.attend  className="col-6"/>
+                            <x-inputs.attend_confirm  className="col-6"/>
                         @endif
                         @if ($route == 'invitations.attentions')
                             <div class="row">
-                                <x-inputs.lang />
+                                <x-inputs.lang className="col-6" />
 
 
-                                <x-inputs.send_email />
-                                <x-inputs.send_whatsapp />
-                                <x-inputs.radio_attend_confirm />
+                                <x-inputs.send_email  className="col-6"/>
+                                <x-inputs.send_whatsapp  className="col-6"/>
+                                <x-inputs.radio_attend_confirm  className="col-6"/>
                         @endif
                     </div>
                     <button type="submit" class="btn btn-primary button _">

@@ -1,5 +1,5 @@
 
-<div class="col-md-6">
+<div class="{{ $className }}">
     <p> 2 اللقب</p>
     <select class="form-select" name="surname2" aria-label="Default select example">
         <option selected>Open this select menu</option>

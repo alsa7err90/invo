@@ -1,4 +1,4 @@
-<div class="col-md-6">
+<div class="{{ $className }}">
     <p> ارسال واتساب</p>
     <div class="btn-group" role="group"
         aria-label="Basic radio toggle button group">

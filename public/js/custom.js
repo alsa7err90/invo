@@ -134,20 +134,20 @@ $(document).ready(function () {
             cache: false,
             success: function (response) {
                 console.log(response);
-                $(" input[name=surname]").val(response.surname);
-                $("input[name=surname2]").val(response.surname2);
-                $("input[name=name]").val(response.name);
-                $("input[name=email]").val(response.email);
-                $("input[name=email2]").val(response.email2);
-                $("input[name=side]").val(response.side);
-                $("input[name=position]").val(response.position);
-                $("select[name=group]").val(response.group);
-                $("input[name=send_email_with_change]").val(
+                $("#form_ajax_post_edit input[name=surname]").val(response.surname);
+                $("#form_ajax_post_edit input[name=surname2]").val(response.surname2);
+                $("#form_ajax_post_edit input[name=name]").val(response.name);
+                $("#form_ajax_post_edit input[name=email]").val(response.email);
+                $("#form_ajax_post_edit input[name=email2]").val(response.email2);
+                $("#form_ajax_post_edit input[name=side]").val(response.side);
+                $("#form_ajax_post_edit input[name=position]").val(response.position);
+                $("#form_ajax_post_edit select[name=group]").val(response.group);
+                $("#form_ajax_post_edit input[name=send_email_with_change]").val(
                     response.send_email_with_change
                 );
-                $("input[name=attend]").val(response.attend);
-                $("input[name=attend_confirm]").val(response.attend_confirm);
-                $("input[name=status]").val(response.status);
+                $("#form_ajax_post_edit input[name=attend]").val(response.attend);
+                $("#form_ajax_post_edit input[name=attend_confirm]").val(response.attend_confirm);
+                $("#form_ajax_post_edit input[name=status]").val(response.status);
                 $("#form_ajax_post_edit").attr("data-action", url_update);
                 $("#form_ajax_post_edit").attr("data-id", id);
             },

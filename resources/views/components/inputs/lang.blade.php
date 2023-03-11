@@ -1,4 +1,4 @@
-<div class="col-md-6">
+<div class="{{ $className }}">
     <p> لغة الدعوة </p>
     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
         <input type="radio" value="1" class="btn-check" name="lang"
