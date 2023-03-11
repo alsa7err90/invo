@@ -5,5 +5,6 @@ interface InvitationRepositoryInterface{
     public function storeAttentions($request);
     public function storePublic($request);
     public function getRow($invo);
+    public function getTable($invo);
     
 }

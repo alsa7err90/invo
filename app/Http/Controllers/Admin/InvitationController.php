@@ -8,7 +8,7 @@ use App\Http\Requests\PublicStoreRequest;
 use App\Interfaces\InvitationRepositoryInterface;
 use App\Models\Invitation;
 use Illuminate\Http\Request;
-use Response;
+use Symfony\Component\HttpFoundation\Response;
 
 class InvitationController extends Controller
 {
@@ -40,13 +40,16 @@ class InvitationController extends Controller
     
     public function show($id)
     {
-        //
+        $invo = Invitation::find($id);
+        $output =  $this->invitationRepository->getTable($invo); 
+        return $output;
     }
 
     
     public function edit($id)
     {
-        //
+        $invo = Invitation::find($id);
+        return  response()->json($invo,Response::HTTP_OK);
     }
 
     /**
@@ -58,7 +61,17 @@ class InvitationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $invo = Invitation::whereId($id)->first();
+         
+        // $invo->update($request->all());
+
+         $invo->update($request->only('surname','surname2','name',
+         'email','email2','side','position',
+         'group_id','send_email','attend','attend_confirm','status')); 
+ 
+           $output =  $this->invitationRepository->getRow($invo); 
+        return  $output ;  
+        return  response()->json($invo,Response::HTTP_OK);
     }
 
     /**
@@ -68,8 +81,14 @@ class InvitationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    { 
+        $invo=Invitation::find($id);
+        if($invo){
+            $invo->delete();
+            return redirect()->back()->with('message', 'تم الحذف   ');
+        }
+        
+      return redirect()->back()->with('error2', 'هذا العنصر غير موجود');
     }
 
     public function attentions(){
