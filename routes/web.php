@@ -53,5 +53,11 @@ Route::group(['middleware' => ['auth']], function () {
    
     Route::any('search/table', [SearchController::class, 'searchTable'])->name('search.table');
 
+    // excel
+    
+    Route::get('invitation/exportAll', [InvitationController::class, 'exportAll'])->name('invitations.exportAll');
+    Route::get('invitation/exportPublic', [InvitationController::class, 'exportPublic'])->name('invitations.exportPublic');
+    Route::get('invitation/exportAtt', [InvitationController::class, 'exportAtt'])->name('invitations.exportAtt');
+    
 
 });

@@ -8,8 +8,11 @@
                 data-bs-target="#{{ $target }}">
                 اضافة
             </button>
-            <a href="#" class="btn btn-secondary"><i class="material-icons">&#xE24D;</i>
+            @if (isset($export))
+                 <a href="{{ $export }}" class="btn btn-secondary"><i class="material-icons">&#xE24D;</i>
                 <span>Export to Excel</span></a>
+            @endif
+           
         </div>
     </div>
-</div>
+</div> 

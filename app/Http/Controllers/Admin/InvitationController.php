@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\InvitationAtteExport;
+use App\Exports\InvitationExport;
+use App\Exports\InvitationPublicExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AttentionsStoreRequest;
 use App\Http\Requests\PublicStoreRequest;
@@ -9,6 +12,7 @@ use App\Interfaces\InvitationRepositoryInterface;
 use App\Models\Invitation;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Maatwebsite\Excel\Facades\Excel;
 
 class InvitationController extends Controller
 {
@@ -118,5 +122,19 @@ class InvitationController extends Controller
 
     }
     
+    public function exportAll() 
+    {
+        return Excel::download(new InvitationExport, 'Invitations.xlsx');
+    }
     
+    public function exportPublic() 
+    {
+        return (new InvitationPublicExport('0'))->download('Invitations.xlsx');
+        
+    }
+    
+    public function exportAtt() 
+    {
+        return (new InvitationAtteExport('1'))->download('Invitations.xlsx'); 
+     }
 }

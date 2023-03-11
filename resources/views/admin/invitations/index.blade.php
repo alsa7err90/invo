@@ -7,7 +7,7 @@
             <div class="container-xl">
                 <div class="table-responsive">
                     <div class="table-wrapper">
-                        <x-other.title target="addModal">
+                        <x-other.title target="addModal" :export="route('invitations.exportAll')">
                             <x-slot name="title"> جميع الدعوات </x-slot>
                         </x-other.title>
                          <x-alert.success />

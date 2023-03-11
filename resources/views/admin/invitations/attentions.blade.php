@@ -6,7 +6,7 @@
             <div class="container-xl">
                 <div class="table-responsive">
                     <div class="table-wrapper">
-                        <x-other.title target="addModal">
+                        <x-other.title target="addModal" :export="route('invitations.exportAtt')">
                             <x-slot name="title"> ارسال الدعوات </x-slot>
                         </x-other.title>
                         <form class="row g-3" id="form_ajax_post_search" method="post"
