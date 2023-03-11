@@ -22,17 +22,15 @@ class UserController extends Controller
     public function index()
     {
         $users = User::get();
-        return view('admin.profile.index',compact('users'));
+        return view('admin.profile.index', compact('users'));
     }
 
-    
+
     public function store(NewUserRequest $request)
-    {  
+    {
         $user =  $this->userRepository->store($request);
-        $output =  $this->userRepository->getRow($user); 
-        return  $output ; 
-      
-        
+        $output =  $this->userRepository->getRow($user);
+        return  $output;
     }
 
     public function show($id)
@@ -42,17 +40,34 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        //
+        $invo = User::find($id);
+        return  response()->json($invo);
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $checkPassword = $this->userRepository->checkMatch($request->password, $request->password2);
+        if (!$checkPassword)   return response()->json(['error' => 'كلمات المرور غير متطابقة '], 404); // Status code here
+
+        $invo = User::whereId($id)->first();
+        $update = $this->userRepository->update($request, $id);
+        if ($update) {
+            $invo = User::whereId($id)->first();
+            $output =  $this->userRepository->getRow($invo);
+            return  $output;
+        }
+        return response()->json(['error' => 'Error msg'], 404); // Status code here
+
     }
 
     public function destroy($id)
     {
-        //
+        $invo = User::find($id);
+        if ($invo) {
+            $invo->delete();
+            return redirect()->back()->with('message', 'تم الحذف   ');
+        }
+        return redirect()->back()->with('error2', 'هذا العنصر غير موجود');
     }
 
 

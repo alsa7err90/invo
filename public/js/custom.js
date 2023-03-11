@@ -63,22 +63,27 @@ $(document).ready(function () {
             enctype: "multipart/form-data",
             success: function (response) {
                 console.log(response);
-
-                $(`.${id}`).replaceWith(response);
-                $("input").val("");
-                $("select").val("");
-
-                $("#modal_edit_public .btn-close").click();
-                $("#addModal .btn-close").click();
-                $("#modal_edit_group .btn-close").click();
-                $("#modal_edit_surname .btn-close").click();
-                
-                alert("تمت التعديل بنجاح");
+                if(response !== "error"){
+                    $(`.${id}`).replaceWith(response);
+                    $("input").val("");
+                    $("select").val("");
+    
+                    $("#modal_edit_public .btn-close").click();
+                    $("#addModal .btn-close").click();
+                    $("#modal_edit_group .btn-close").click();
+                    $("#modal_edit_surname .btn-close").click();
+                    $("#modal_edit_user .btn-close").click();
+                    
+                    alert("تمت التعديل بنجاح");
+                }
+                else{
+                   
+                }
+               
             },
-            error: function (xhr, textStatus, error) {
-                console.log(xhr.statusText);
-                console.log(textStatus);
-                console.log(error);
+            error: function (data ) {
+                var errors = data.responseJSON;
+              alert(errors.error);
             },
         }).fail(function (data) {
             var response = JSON.parse(data.responseText);
@@ -299,5 +304,43 @@ $(document).ready(function () {
             });
         });
     });
-    // end 8
+    // end  9 
+
+    
+    // 10
+     
+    $("body").on("click", "#editUser", function (event) {
+        event.preventDefault();
+        var id = $(this).data("id");
+        var url = $(this).attr("href");
+        var url_update = url.replace("/edit", "");
+        $.ajax({
+            url: url,
+            method: "get",
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function (response) {
+                console.log(response);
+                $("#form_ajax_post_edit input[name=nickname]").val(response.nickname);
+                $("#form_ajax_post_edit input[name=email]").val(response.email); 
+                 $("#form_ajax_post_edit").attr("data-action", url_update);
+                $("#form_ajax_post_edit").attr("data-id", id);
+            },
+            error: function (xhr, textStatus, error) {
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+            },
+        }).fail(function (data) {
+            var response = JSON.parse(data.responseText);
+
+            $.each(response.errors, function (key, value) {
+                alert(value);
+            });
+        });
+    });
+    // end 10
+
+
 });

@@ -10,6 +10,8 @@
                         <x-other.title target="addModal">
                             <x-slot name="title"> جميع الدعوات </x-slot>
                         </x-other.title>
+                         <x-alert.success />
+                        <x-alert.error />
                         <form  class="row g-3" id="form_ajax_post_search" method="post" data-action="{{ route('search.all') }}">
                             @csrf 
                             <x-inputs.fullname className="col-md-3" />
