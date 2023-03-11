@@ -41,7 +41,7 @@
             @error('email2')
                 <div class="error">{{ $errors->first('email2') }}</div>
             @enderror
-            <x-buttons.submit lable="تعديل" className="col-6" />
+            <x-buttons.submit label="تعديل" className="col-6" />
         </form>
 
     </div>

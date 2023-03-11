@@ -11,7 +11,7 @@
                     @csrf
                     <x-inputs.surname className="col-12 " />
                     <x-inputs.lang className="col-12 pt-2" />
-                   <x-buttons.submit className="col-3" lable="اضافة" /> 
+                   <x-buttons.submit className="col-3" label="اضافة" /> 
 
                 </form>
             </div>

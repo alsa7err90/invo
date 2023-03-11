@@ -83,15 +83,9 @@ $(document).ready(function () {
             },
             error: function (data ) {
                 var errors = data.responseJSON;
-              alert(errors.error);
+              console.log(errors);
             },
-        }).fail(function (data) {
-            var response = JSON.parse(data.responseText);
-
-            $.each(response.errors, function (key, value) {
-                alert(value);
-            });
-        });
+        }) ;
     });
     // end 2
     // 3
@@ -182,7 +176,7 @@ $(document).ready(function () {
     $("body").on("click", "#delete_invo", function (event) {
         event.preventDefault();
         let href = $(this).attr("data-attr");
-        alert;
+        
         $.ajax({
             url: href,
             beforeSend: function () {
@@ -342,5 +336,38 @@ $(document).ready(function () {
     });
     // end 10
 
+    // 11 
+    $("body").on("click", "#editTable", function (event) {
+        event.preventDefault();
+        
+        var id = $(this).data("id");
+        var url = $(this).attr("href");
+        var url_update = url.replace("/edit", "");
+        $.ajax({
+            url: url,
+            method: "get",
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function (response) {
+                console.log(response);
+                $("#form_ajax_post_edit input[name=code]").val(response.code);
+                $("#form_ajax_post_edit select[name=type]").val(response.type); 
+                 $("#form_ajax_post_edit").attr("data-action", url_update);
+                $("#form_ajax_post_edit").attr("data-id", id);
+            },
+            error: function (xhr, textStatus, error) {
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+            },
+        }).fail(function (data) {
+            var response = JSON.parse(data.responseText);
 
+            $.each(response.errors, function (key, value) {
+                alert(value);
+            });
+        });
+    });
+    // end 10
 });

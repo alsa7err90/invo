@@ -13,7 +13,7 @@
                     {{ method_field('PUT') }}
                     <x-inputs.surname className="col-12 " />
                     <x-inputs.lang className="col-12 pt-2" />
-                    <x-buttons.submit lable="تعديل" className="col-3" />
+                    <x-buttons.submit label="تعديل" className="col-3" />
                 </form>
             </div>
         </div>

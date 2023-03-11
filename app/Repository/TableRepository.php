@@ -32,4 +32,14 @@ class TableRepository implements TableRepositoryInterface
             '</tr>';
         return $output;
     }
+
+    public function update($request,$id)
+    {
+        if ($request->hasFile('image')) {
+            $request =   uploadImage($request->except(['_token','_method']));
+        } else {
+            $request =  $request->except(['_token','_method']);
+        }
+        return  Table::whereId($id)->update($request);
+    }
 }

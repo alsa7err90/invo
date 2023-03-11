@@ -1,4 +1,4 @@
-<div class="col-md-3">
+<div class="{{ $className }}">
     <label for="mobile">داخلي / خارجي</label>
     <select id="is_out" class="form-select" name="is_out">
         <option value>الكل</option>

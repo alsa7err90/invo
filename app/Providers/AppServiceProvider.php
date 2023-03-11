@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Models\Group;
+use App\Models\Invitation;
 use App\Models\Surname;
 use App\Models\Table;
+use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
@@ -41,5 +43,9 @@ class AppServiceProvider extends ServiceProvider
         // list groups
         $list_groups = Group::get();
         View::share('list_groups',$list_groups);
+        
+        // list users
+        $list_users_invo = Invitation::get();
+        View::share('list_users_invo',$list_users_invo);
     }
 }

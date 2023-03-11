@@ -22,7 +22,7 @@
                             <x-inputs.is_attentions className="col-md-3" />
                             <x-inputs.group className="col-md-3" />
                             <x-inputs.is_out className="col-md-3" />
-                            <x-buttons.submit className="col-md-3"  lable="بحث" /> 
+                            <x-buttons.submit className="col-md-3"  label="بحث" /> 
                         </form>
                         <x-alert.success />
                         <x-alert.error />

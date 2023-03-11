@@ -49,7 +49,9 @@ class TableController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+        $invo = Table::find($id);
+        return  response()->json($invo);
     }
 
     /**
@@ -61,7 +63,10 @@ class TableController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $table = $this->tableRepository->update($request,$id);
+        $table = Table::whereId($id)->first();
+        $output =  $this->tableRepository->getRow($table);
+        return  $output;
     }
 
     /**
@@ -72,8 +77,14 @@ class TableController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+        $invo=Table::find($id);
+        if($invo){
+            $invo->delete();
+            return redirect()->back()->with('message', 'تم الحذف   ');
+        }
+        
+      return redirect()->back()->with('error2', 'هذا العنصر غير موجود');
+    } 
 
     public function empty()
     {
