@@ -6,9 +6,7 @@
                     @csrf
                     @method('DELETE')
                     <h5 class="text-center">تحذير </h5>
-                </div>
-
-
+                </div> 
                 <div class="modal-body">
                     <p>Are you sure you want to delete?</p>
                 </div>

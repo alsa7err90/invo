@@ -12,28 +12,10 @@
                     <form method="post" id="form_ajax_post_edit" class="fabrikForm"
                         data-action="" data-id="" enctype="application/x-www-form-urlencoded">
                         @csrf
-                        {{ method_field('PUT') }}
-                      
-                        
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p> اللون</p>
-    
-                                <input type="text" name="color" class="coloris instance1" data-coloris
-                                    value="rgb(255, 0, 0)">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p> الاسم</p>
-                                <input class="form-control" name="name" type="text"
-                                    aria-label="default input example">
-                            </div>
-                        </div>
-                         
-                    
-                        <button type="submit" class="btn btn-primary button _">تعديل</button>
-                            
+                        {{ method_field('PUT') }} 
+                        <x-inputs.color className="col-md-12" value="rgb(0,0,0,1)" />
+                        <x-inputs.fullname className="col-md-12" />
+                        <x-buttons.submit label="تعديل" />  
                     </form>
                 </div>
             </div> 

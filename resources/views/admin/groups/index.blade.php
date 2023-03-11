@@ -34,7 +34,7 @@
                                         <td>{{ $item->name }}</td>
                                         <td> <input type="checkbox"></td>
                                         <td>
-                                            <x-buttons.edit target="modal_edit_group" :id="$item->id" :url="route('groups.edit', $item->id)" />
+                                            <x-buttons.edit target="modal_edit_group" :id="$item->id" :url="route('groups.edit', $item->id)"  modal="editGroup" />
                                             <x-buttons.delete target="deleteModal" :url="route('groups.destroy', $item->id)" />
 
 

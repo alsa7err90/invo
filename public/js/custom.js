@@ -70,7 +70,10 @@ $(document).ready(function () {
 
                 $("#modal_edit_public .btn-close").click();
                 $("#addModal .btn-close").click();
-                alert("تمت الاضافة بنجاح");
+                $("#modal_edit_group .btn-close").click();
+                $("#modal_edit_surname .btn-close").click();
+                
+                alert("تمت التعديل بنجاح");
             },
             error: function (xhr, textStatus, error) {
                 console.log(xhr.statusText);
@@ -260,6 +263,41 @@ $(document).ready(function () {
             });
         });
     });
-    // end 4
+    // end 8
 
+    // 9
+     
+    $("body").on("click", "#editSurname", function (event) {
+        event.preventDefault();
+        var id = $(this).data("id");
+        var url = $(this).attr("href");
+        var url_update = url.replace("/edit", "");
+        $.ajax({
+            url: url,
+            method: "get",
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function (response) {
+                console.log(response);
+                 $("#form_ajax_post_edit input[name=title]").val(response.title);
+                $(`#form_ajax_post_edit input[value!=${!response.lang}]`).attr('checked',false)
+                 $(`#form_ajax_post_edit input[value=${response.lang}]`).attr('checked',true)
+                $("#form_ajax_post_edit").attr("data-action", url_update);
+                $("#form_ajax_post_edit").attr("data-id", id);
+            },
+            error: function (xhr, textStatus, error) {
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+            },
+        }).fail(function (data) {
+            var response = JSON.parse(data.responseText);
+
+            $.each(response.errors, function (key, value) {
+                alert(value);
+            });
+        });
+    });
+    // end 8
 });

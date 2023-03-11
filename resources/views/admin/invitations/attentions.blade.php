@@ -16,7 +16,7 @@
                             <x-inputs.email className="col-md-3" />
                             <x-inputs.mobile className="col-md-3" />
                             <x-inputs.attend_confirm className="col-md-3" />
-                            <x-buttons.submit className="col-md-3" /> 
+                            <x-buttons.submit className="col-md-3"  lable="بحث" /> 
                         </form>
 
                         <x-alert.success />
@@ -47,7 +47,7 @@
                                         <td> <input type="checkbox"></td>
                                         <td>
                                             <x-buttons.edit target="modal_edit_public" :id="$invo->id"
-                                                :url="route('invitations.edit', $invo->id)" />
+                                                :url="route('invitations.edit', $invo->id)" modal="editInvo" />
                                             <x-buttons.delete target="deleteModal" :url="route('invitations.destroy', $invo->id)" />
                                             <x-buttons.show target="modal_show_invo" :url="route('invitations.show', $invo->id)" />
                                             <x-buttons.print_black target="print_black" :url="route('invitations.show', $invo->id)" />
