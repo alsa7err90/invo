@@ -17,14 +17,17 @@ class UserRepository implements UserRepositoryInterface
         return false;
     }
     public function update($request, $user_id)
-    {
+    {   
         $user = User::find($user_id);
         $user->nickname = $request->nickname;
         if ($request->has('password')) {
             $user->password = bcrypt($request->password);
         }
         $user->email = $request->email;
-        return $user->update();
+        if($user->update()){
+            return true;
+        }
+        return false;
     }
     public function store($request)
     {

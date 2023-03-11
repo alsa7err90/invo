@@ -51,7 +51,7 @@ class UserController extends Controller
 
         $invo = User::whereId($id)->first();
         $update = $this->userRepository->update($request, $id);
-        if ($update) {
+        if ($update) { 
             $invo = User::whereId($id)->first();
             $output =  $this->userRepository->getRow($invo);
             return  $output;
@@ -66,7 +66,7 @@ class UserController extends Controller
         if ($invo) {
             $invo->delete();
             return redirect()->back()->with('message', 'تم الحذف   ');
-        }
+        } 
         return redirect()->back()->with('error2', 'هذا العنصر غير موجود');
     }
 
