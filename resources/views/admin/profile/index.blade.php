@@ -49,6 +49,7 @@
 
                             </tbody>
                         </table>
+                        <x-paginate :items='$users' /> 
                     </div>
                 </div>
             </div>

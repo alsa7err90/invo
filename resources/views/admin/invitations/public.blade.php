@@ -65,7 +65,8 @@
 
                             </tbody>
 
-                        </table>
+                        </table> 
+                        <x-paginate :items='$invos' /> 
                     </div>
                 </div>
             </div>

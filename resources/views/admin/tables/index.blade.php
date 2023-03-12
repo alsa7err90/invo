@@ -77,6 +77,7 @@
 
                             </tbody>
                         </table>
+                        <x-paginate :items='$tables' /> 
                     </div>
                 </div>
             </div>

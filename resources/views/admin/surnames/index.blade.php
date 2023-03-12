@@ -44,6 +44,7 @@
 
                             </tbody>
                         </table>
+                        <x-paginate :items='$surnames' /> 
                     </div>
                 </div>
             </div>

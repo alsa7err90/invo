@@ -30,7 +30,7 @@ class InvitationController extends Controller
      */
     public function index()
     {
-        $invos = Invitation::get();
+        $invos = Invitation::paginate(env('PAGINATE'));
         return view('admin.invitations.index',compact('invos'));
     }
 
@@ -89,13 +89,13 @@ class InvitationController extends Controller
     }
 
     public function attentions(){
-       $invos =  Invitation::where('is_attentions','1')->get();
+       $invos =  Invitation::where('is_attentions','1')->paginate(env('PAGINATE'));;
         return view('admin.invitations.attentions',compact('invos'));
     }
 
     public function public(){
        
-        $invos =  Invitation::where('is_attentions','0')->get();
+        $invos =  Invitation::where('is_attentions','0')->paginate(env('PAGINATE'));;
         return view('admin.invitations.public',compact('invos'));
     }
     

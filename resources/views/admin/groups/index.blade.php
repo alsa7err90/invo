@@ -46,6 +46,7 @@
 
                             </tbody>
                         </table>
+                        <x-paginate :items='$groups' /> 
                     </div>
                 </div>
             </div>

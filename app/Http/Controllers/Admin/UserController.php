@@ -21,7 +21,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::get();
+        $users = User::paginate(env('PAGINATE'));
         return view('admin.profile.index', compact('users'));
     }
 

@@ -7,6 +7,7 @@ use App\Models\Invitation;
 use App\Models\Surname;
 use App\Models\Table;
 use App\Models\User;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
@@ -31,6 +32,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        
+        Paginator::useBootstrap();
         
         //  list surnames
         $list_usrnames = Surname::get();

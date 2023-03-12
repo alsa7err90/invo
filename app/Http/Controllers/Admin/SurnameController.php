@@ -21,7 +21,7 @@ class SurnameController extends Controller
 
     public function index()
     {
-        $surnames = Surname::paginate(10);
+        $surnames = Surname::paginate(env('PAGINATE'));
         return   view('admin.surnames.index', compact('surnames'));
     }
 
