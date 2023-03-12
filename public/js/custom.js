@@ -26,18 +26,14 @@ $(document).ready(function () {
             enctype: "multipart/form-data",
             success: function (response) {
                 console.log(response);
-                $("table tbody").prepend(response);
-                $("input").val("");
-                $("select").val("");
-
+                $("table tbody").prepend(response); 
                 $("#modal_edit_public .btn-close").click();
                 $("#addModal .btn-close").click();
                 alert("تمت الاضافة بنجاح");
             },
-            error: function (xhr, textStatus, error) {
-                console.log(xhr.statusText);
-                console.log(textStatus);
-                console.log(error);
+            error: function (data) {
+                var errors = data.responseJSON;
+                console.log(errors);
             },
         }).fail(function (data) {
             var response = JSON.parse(data.responseText);
