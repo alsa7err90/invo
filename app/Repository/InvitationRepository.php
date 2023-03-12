@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Interfaces\InvitationRepositoryInterface;
+use App\Mail\ChangeStatusMail;
 use App\Mail\EnglishSendInvoMail;
 use App\Mail\SendInvoMail;
 use App\Models\Invitation;
@@ -11,42 +12,72 @@ use Mail;
 
 class InvitationRepository implements InvitationRepositoryInterface
 {
-  public function storeAttentions($request)
-  {
-    $meet_id = 1;
-    $request->request->add(['meet_id' => $meet_id]);
-    $request->request->add(['is_attentions' => '1']);
-
-    $invo = Invitation::create($request->all());
-
-    return $invo;
-  }
 
   public function storePublic($request)
   {
     $meet_id = 1;
-    $request->request->add(['meet_id' => $meet_id]); 
+    $request->request->add(['meet_id' => $meet_id]);
     $details = [
       'title' => " التسجيل لحضور الجلسة الحوارية لتدشين برنامج تحول القطاع الصحي",
       'username' => $request->name
     ];
-    if($request->send_email == 1){
-      if($request->lang == 0){
-        $details['title']= "Register to attend the dialogue session to launch the health sector transformation program";
+    if ($request->send_email == 1) {
+      if ($request->lang == 0) {
+        $details['title'] = "Register to attend the dialogue session to launch the health sector transformation program";
         Mail::to($request->email)->send(new EnglishSendInvoMail($details));
-      }
-      else{
+      } else {
         Mail::to($request->email)->send(new SendInvoMail($details));
       }
-     
     }
-    
-     $invo = Invitation::create($request->except(['send_email_with_change']));
-      return $invo;
-    
-   
+
+    $invo = Invitation::create($request->all());
+    return $invo;
   }
 
+  public function update($request, $id)
+  {
+    $invo = Invitation::whereId($id)->first(); 
+    $invo->update($request->only(
+      'surname',
+      'surname2',
+      'name',
+      'email',
+      'email2',
+      'side',
+      'position',
+      'group_id',
+      'send_email',
+      'attend',
+      'attend_confirm',
+      'status'
+    ));
+    $invo = Invitation::whereId($id)->first();
+    $details = [
+      'title' => " التسجيل لحضور الجلسة الحوارية لتدشين برنامج تحول القطاع الصحي",
+      'username' => $request->name,
+      'new_status'=>""
+    ];
+    if ($invo->send_email == 1) {
+      switch ($request->attend_confirm) {
+        case '1':
+          $state = "قيد الدراسة";
+          break;
+        case '2':
+          $state = "تم التأكيد";
+          break;
+        case '3':
+          $state = "تم الاعتذار";
+          break;
+
+        default:
+          $state = $request->attend_confirm;
+          break;
+      }
+      $details['new_status'] = $state;
+      Mail::to($request->email)->send(new ChangeStatusMail($details));
+    }
+    return $invo;
+  }
   public function getRow($invo)
   {
 

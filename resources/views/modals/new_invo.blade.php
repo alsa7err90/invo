@@ -48,10 +48,10 @@ $route = \Request::route()->getName();
                                 <x-inputs.send_email  className="col-6"/>
                                 <x-inputs.send_whatsapp  className="col-6"/>
                                 <x-inputs.radio_attend_confirm  className="col-6"/>
+                                <input type="hidden" name="is_attentions" value="1" />
                         @endif
                     </div>
-                    <button type="submit" class="btn btn-primary button _">
-                        ارسال</button>
+                  <x-buttons.submit label="اضافة" className="col-6" />
 
                 </form>
             </div>

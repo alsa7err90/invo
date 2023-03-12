@@ -65,17 +65,9 @@ class InvitationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $invo = Invitation::whereId($id)->first();
-         
-        // $invo->update($request->all());
-
-         $invo->update($request->only('surname','surname2','name',
-         'email','email2','side','position',
-         'group_id','send_email','attend','attend_confirm','status')); 
- 
-           $output =  $this->invitationRepository->getRow($invo); 
-        return  $output ;  
-        return  response()->json($invo,Response::HTTP_OK);
+        $invo =  $this->invitationRepository->update( $request, $id);
+        $output =  $this->invitationRepository->getRow($invo); 
+        return  $output ;   
     }
 
     /**
@@ -106,21 +98,21 @@ class InvitationController extends Controller
         return view('admin.invitations.public',compact('invos'));
     }
     
-    public function sendAttentions(AttentionsStoreRequest $request){
+    // public function sendAttentions(AttentionsStoreRequest $request){
        
-        $invo =  $this->invitationRepository->storeAttentions($request);
-        $output  = '<tr>' .
-                    '<td>' . $invo->id . '</td>' .
-                    '<td>' . $invo->created_at . '</td>' .
-                    '<td>' . $invo->name . '</td>' .
-                    '<td>' . $invo->mobile . '</td>' .
-                    '<td>' . $invo->email . '</td>' .
-                    '<td><input type="checkbox"></td>' .
-                    '<td><a href="#" class="settings" title="تحرير" data-toggle="tooltip"><i class="material-icons">&#xe3c9;</i></a> <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a> <a href="#" class="settings" title="استعراض" data-toggle="tooltip"><i class="material-icons">&#xe8b6;</i></a> <a href="#" class="settings" title="طباعة" data-toggle="tooltip"><i class="material-icons">&#xe8ad;</i></a><a href="#" class="settings" title="طباعة مع حلفية" data-toggle="tooltip"><iclass="material-icons text-success">&#xe8ad;</i></td>' .
-                    '</tr>';
-        return  $output ;  
+    //     $invo =  $this->invitationRepository->storeAttentions($request);
+    //     $output  = '<tr>' .
+    //                 '<td>' . $invo->id . '</td>' .
+    //                 '<td>' . $invo->created_at . '</td>' .
+    //                 '<td>' . $invo->name . '</td>' .
+    //                 '<td>' . $invo->mobile . '</td>' .
+    //                 '<td>' . $invo->email . '</td>' .
+    //                 '<td><input type="checkbox"></td>' .
+    //                 '<td><a href="#" class="settings" title="تحرير" data-toggle="tooltip"><i class="material-icons">&#xe3c9;</i></a> <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a> <a href="#" class="settings" title="استعراض" data-toggle="tooltip"><i class="material-icons">&#xe8b6;</i></a> <a href="#" class="settings" title="طباعة" data-toggle="tooltip"><i class="material-icons">&#xe8ad;</i></a><a href="#" class="settings" title="طباعة مع حلفية" data-toggle="tooltip"><iclass="material-icons text-success">&#xe8ad;</i></td>' .
+    //                 '</tr>';
+    //     return  $output ;  
 
-    }
+    // }
     
     public function exportAll() 
     {
