@@ -10,7 +10,7 @@
                     data-action="{{ route('tables.store') }}" enctype="application/x-www-form-urlencoded">
                     @csrf
                     <x-inputs.table_code className="col-auto" />
-                    <x-inputs.table_type className="col-auto" />
+                    <x-inputs.tabletype className="col-auto" />
                     <x-inputs.table_image className="col-auto" />
                     <x-buttons.submit className="col-auto" label="اضافة" /> 
                 </form>

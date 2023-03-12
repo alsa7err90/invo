@@ -2,11 +2,8 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
-
-            <div class="container-xl">
-                <div class="table-responsive">
-                    <div class="table-wrapper">
+        <div class="row justify-content-center pt-5"> 
+                <div class="table-responsive"> 
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-5">

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-light" id="neubar">
+<nav class="navbar navbar-expand-lg navbar-light" id="neubar">
     <div class="container">
         <a class="navbar-brand" href="#"><img src="{{ asset('logo.png') }}"
                 height="60" /></a>

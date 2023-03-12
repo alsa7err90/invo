@@ -1,4 +1,4 @@
-<div class="{{ $className }}">
+<div class="{{ $className ?? "col-auto" }}">
     <label for="mobile"> نوع الكرسي</label>
     <select id="type" class="form-select" name="type">
         <option value>غير محدد</option>

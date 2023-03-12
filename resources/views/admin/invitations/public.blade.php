@@ -2,11 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
-
-            <div class="container-xl">
-                <div class="table-responsive">
-                    <div class="table-wrapper">
+        <div class="row justify-content-center pt-5"> 
                         <x-other.title target="addModal" :export="route('invitations.exportPublic')">
                             <x-slot name="title"> الدعوات العامة </x-slot>
                         </x-other.title>
@@ -69,10 +65,7 @@
                         <x-paginate :items='$invos' /> 
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
+            
     <!-- Modal -->
     @include('modals.edit_invo')
     @include('modals.new_invo')
