@@ -69,10 +69,7 @@ $(document).ready(function () {
             success: function (response) {
                 console.log(response);
                 if(response !== "error"){
-                    $(`.${id}`).replaceWith(response);
-                    $("input").val("");
-                    $("select").val("");
-    
+                    $(`.${id}`).replaceWith(response);  
                     $("#modal_edit_public .btn-close").click();
                     $("#addModal .btn-close").click();
                     $("#modal_edit_group .btn-close").click();
@@ -88,7 +85,7 @@ $(document).ready(function () {
             },
             error: function (data ) {
                 var errors = data.responseJSON;
-              console.log(errors);
+              alert(errors.error);
             },
         }) ;
     });
@@ -337,6 +334,8 @@ $(document).ready(function () {
                 console.log(response);
                 $("#form_ajax_post_edit #code").html(response.code);
                 $("#form_ajax_post_edit #type").html(response.type); 
+                $("#image_table_position").attr("src", url_uploads+response.image);
+                
                  $("#form_ajax_post_edit").attr("data-action", url_update);
                 $("#form_ajax_post_edit").attr("data-id", id);
             },

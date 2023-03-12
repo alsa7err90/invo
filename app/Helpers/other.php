@@ -2,7 +2,9 @@
 
 use App\Models\Group;
 use App\Models\Invitation;
+use App\Models\Permission;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 // 1 - getNameGroupById
 // 2 - uploadImage
@@ -34,4 +36,14 @@ function getUsernameById($id){
     if($id){
         return   $user=  Invitation::whereId($id)->first()->name;  
     } 
+}
+
+function chechPermission($permission_name){
+  
+  $permission_id = Permission::where('permission_name','history')->first()->id;
+  $rel =  DB::table('permission_user')->where('permission_id',$permission_id)->where('user_id',auth()->user()->id)->count();
+   if($rel == 1){
+      return true;
+   }
+   return false;
 }

@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Interfaces\TableRepositoryInterface;
+use App\Models\HistTable;
 use App\Models\Table;
 
 class TableRepository implements TableRepositoryInterface
@@ -48,6 +49,35 @@ class TableRepository implements TableRepositoryInterface
         } else {
             $request =  $request->except(['_token', '_method']);
         }
-        return  Table::whereId($id)->update($request);
+        $table =   Table::whereId($id)->update($request);
+        $table = Table::whereId($id)->first();
+        $hist =  new HistTable();
+        $hist->table_id = $table->id;
+        $hist->code = $table->code;
+        $hist->invitation = $table->invitation;
+        $hist->type = $table->type;
+        $hist->status = $table->status;
+        $hist->save();
+        return true;
+    }
+
+    public function getTable($items){
+         $output =  '<tr>' .
+         ' <th>م</th>' .
+         '<th>رمز الكرسي</th>' .
+         '<th>المدعو </th>' .
+         '<th>فئة الكرسي </th>' .
+         '<th>حالة الكرسي </th>' .
+         '</tr>' ;
+        foreach($items as $item){
+            $output  .= '<tr>' .
+            '<td>' . $item->id . '</td>' .
+            '<td>' . $item->code . '</td>' .
+            '<td>' . getUsernameById($item->invitation) . '</td>' .
+            '<td>' . $item->type . '</td>' .
+            '<td>' . getStatusTable($item->status) . '</td>' .
+            '</tr>';
+        }
+        return  $output;
     }
 }

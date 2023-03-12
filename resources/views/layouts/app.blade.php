@@ -113,6 +113,10 @@
             swatchesOnly: true
         });
     </script>
+
+    <script>
+        var url_uploads = "{{ asset('/') }}uploads/";
+    </script>
 </body>
 
 </html>

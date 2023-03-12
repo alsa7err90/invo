@@ -24,6 +24,8 @@
                      <x-buttons.submit className="col-auto" label="تحديث" />
 
                 </form>
+               
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal" id="postition_table" data-src=""> مخطط الكرسي</button>
             </div>
         </div>
     </div>

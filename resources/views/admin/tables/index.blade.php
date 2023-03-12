@@ -15,7 +15,7 @@
                         <form class="row g-3" id="form_ajax_post_search" method="post"
                             data-action="{{ route('search.table') }}">
                             @csrf
-                           <x-inputs.fullname label="المدعو" className="col-auto" />
+                            <x-inputs.fullname label="المدعو" className="col-auto" />
 
 
                             <div class="col-auto">
@@ -32,7 +32,7 @@
                                 <select id="state" class="form-select" name="state">
                                     <option value>الكل</option>
                                     <option value="1">محجوز</option>
-                                    <option value="0">فارغ</option> 
+                                    <option value="0">فارغ</option>
                                 </select>
                             </div>
                             <div class="col-auto">
@@ -63,12 +63,11 @@
                                         <td>{{ getStatusTable($item->status) }}</td>
                                         <td> <input type="checkbox"></td>
                                         <td>
-                                            <x-buttons.edit target="modal_edit_table" :id="$item->id" :url="route('tables.edit', $item->id)"  modal="editTable" />
+                                            <x-buttons.edit target="modal_edit_table" :id="$item->id" :url="route('tables.edit', $item->id)"
+                                                modal="editTable" />
                                             <x-buttons.delete target="deleteModal" :url="route('tables.destroy', $item->id)" />
-    
-                                           <a href="#" data-toggle="tooltip">
-                                                سجل التغييرات
-                                            </a>
+                                            <x-buttons.show target="modal_show_invo" :url="route('tables.show', $item->id)"
+                                                label="سجل التغييرات"  />
                                         </td>
                                     </tr>
                                 @empty
@@ -77,7 +76,7 @@
 
                             </tbody>
                         </table>
-                        <x-paginate :items='$tables' /> 
+                        <x-paginate :items='$tables' />
                     </div>
                 </div>
             </div>
@@ -85,8 +84,10 @@
     </div>
 
     <!-- Modal -->
-   
+
     @include('modals.new_table')
     @include('modals.edit_table')
     @include('modals.delete_invo')
+    @include('modals.show_invo')
+    @include('modals.image')
 @endsection
