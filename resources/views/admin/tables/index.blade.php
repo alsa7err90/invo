@@ -45,7 +45,7 @@
                                     <x-buttons.edit target="modal_edit_table" :id="$item->id" :url="route('tables.edit', $item->id)"
                                         modal="editTable" />
                                     <x-buttons.delete target="deleteModal" :url="route('tables.destroy', $item->id)" />
-                                    <x-buttons.show target="modal_show_invo" :url="route('tables.show', $item->id)" label="سجل التغييرات" />
+                                    <x-buttons.show target="modal_show_invo" :url="route('tables.show', $item->id)"  title="سجل التحديثات" />
                                 </td>
                             </tr>
                         @empty

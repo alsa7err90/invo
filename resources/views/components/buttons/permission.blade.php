@@ -3,4 +3,4 @@
  title="صلاحيات" data-id="{{ $id }}" 
 data-bs-toggle="modal"
 data-bs-target="#{{ $target }}">
-الصلاحيات</a>
+<i class="fa fa-user" aria-hidden="true"></i></a>
