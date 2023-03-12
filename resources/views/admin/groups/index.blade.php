@@ -58,5 +58,5 @@
 
     @include('modals.new_group')
     @include('modals.edit_group')
-    @include('modals.delete_group')
+    @include('modals.delete_invo')
 @endsection

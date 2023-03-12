@@ -23,7 +23,7 @@ class TableRepository implements TableRepositoryInterface
         $output  = '<tr>' .
             '<td>' . $item->id . '</td>' .
             '<td>' . $item->code . '</td>' .
-            '<td>' . $item->invitation . '</td>' .
+            '<td>' . getUsernameById($item->invitation) . '</td>' .
             '<td>' . $item->type . '</td>' .
             '<td>' . getStatusTable($item->status) . '</td>' .
 

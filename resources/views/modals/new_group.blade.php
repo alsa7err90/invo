@@ -6,27 +6,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" id="form_ajax_post" class="fabrikForm"
-                    data-action="{{ route('groups.store') }}">
+                <form method="post" id="form_ajax_post" class="fabrikForm" data-action="{{ route('groups.store') }}">
                     @csrf
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p> اللون</p> 
-                            <input type="text" name="color" class="coloris instance1" data-coloris
-                                value="rgb(255, 0, 0)">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p> الاسم</p>
-                            <input class="form-control" name="name" type="text"
-                                aria-label="default input add">
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary button _">
-                        ارسال</button>
-
+                    <x-inputs.color className="col-md-12" value="rgb(0,0,0,1)" />
+                    <x-inputs.fullname className="col-md-12" />
+                    <x-buttons.submit label="تعديل" />
                 </form>
             </div>
         </div>

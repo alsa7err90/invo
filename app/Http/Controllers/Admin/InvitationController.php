@@ -15,6 +15,18 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Maatwebsite\Excel\Facades\Excel;
 
+// 1- index
+// 2- store
+// 3- show
+// 4- edit
+// 5- update
+// 6- destroy
+// 7- attentions  - get just invitations attentions 
+// 8- public - get just public attentions
+// 9- exportAll
+// 10- exportPublic
+// 11- exportAtt
+// 12- print 
 class InvitationController extends Controller
 {
     protected $invitationRepository;
@@ -26,27 +38,21 @@ class InvitationController extends Controller
          $this->middleware('permission:send_invo', ['only' => ['attentions','store']]);
          $this->middleware('permission:public_invo', ['only' => ['public']]);
 
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    } 
+    // 1
     public function index()
     {
         $invos = Invitation::paginate(env('PAGINATE'));
         return view('admin.invitations.index',compact('invos'));
     }
-
-     
+    // 2
     public function store(PublicStoreRequest $request)
     {
         $invo =  $this->invitationRepository->storePublic($request);
         $output =  $this->invitationRepository->getRow($invo); 
         return  $output ;  
-    }
-
-    
+    } 
+    // 3
     public function show($id)
     {
         $invo = Invitation::find($id);
@@ -54,87 +60,57 @@ class InvitationController extends Controller
         return $output;
     }
 
-    
+    // 4
     public function edit($id)
     {
         $invo = Invitation::find($id);
         return  response()->json($invo,Response::HTTP_OK);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+ 
+    // 5
     public function update(Request $request, $id)
     {
         $invo =  $this->invitationRepository->update( $request, $id);
         $output =  $this->invitationRepository->getRow($invo); 
         return  $output ;   
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // 6
     public function destroy($id)
     { 
         $invo=Invitation::find($id);
         if($invo){
             $invo->delete();
             return redirect()->back()->with('message', 'تم الحذف   ');
-        }
-        
+        } 
       return redirect()->back()->with('error2', 'هذا العنصر غير موجود');
     }
-
+    // 7
     public function attentions(){
        $invos =  Invitation::where('is_attentions','1')->paginate(env('PAGINATE'));;
         return view('admin.invitations.attentions',compact('invos'));
     }
-
+    // 8
     public function public(){
        
         $invos =  Invitation::where('is_attentions','0')->paginate(env('PAGINATE'));;
         return view('admin.invitations.public',compact('invos'));
     }
-    
-    // public function sendAttentions(AttentionsStoreRequest $request){
-       
-    //     $invo =  $this->invitationRepository->storeAttentions($request);
-    //     $output  = '<tr>' .
-    //                 '<td>' . $invo->id . '</td>' .
-    //                 '<td>' . $invo->created_at . '</td>' .
-    //                 '<td>' . $invo->name . '</td>' .
-    //                 '<td>' . $invo->mobile . '</td>' .
-    //                 '<td>' . $invo->email . '</td>' .
-    //                 '<td><input type="checkbox"></td>' .
-    //                 '<td><a href="#" class="settings" title="تحرير" data-toggle="tooltip"><i class="material-icons">&#xe3c9;</i></a> <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a> <a href="#" class="settings" title="استعراض" data-toggle="tooltip"><i class="material-icons">&#xe8b6;</i></a> <a href="#" class="settings" title="طباعة" data-toggle="tooltip"><i class="material-icons">&#xe8ad;</i></a><a href="#" class="settings" title="طباعة مع حلفية" data-toggle="tooltip"><iclass="material-icons text-success">&#xe8ad;</i></td>' .
-    //                 '</tr>';
-    //     return  $output ;  
-
-    // }
-    
+    // 9
     public function exportAll() 
     {
         return Excel::download(new InvitationExport, 'Invitations.xlsx');
     }
-    
+    // 10
     public function exportPublic() 
     {
-        return (new InvitationPublicExport('0'))->download('Invitations.xlsx');
-        
+        return (new InvitationPublicExport('0'))->download('Invitations.xlsx'); 
     }
-    
+    // 11
     public function exportAtt() 
     {
         return (new InvitationAtteExport('1'))->download('Invitations.xlsx'); 
      }
-
+    //  12
      public function print(Request $request,$id) 
      {
         $invo = Invitation::whereId($id)->first();

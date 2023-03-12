@@ -49,7 +49,6 @@ class TableController extends Controller
      */
     public function edit($id)
     {
-        
         $invo = Table::find($id);
         return  response()->json($invo);
     }

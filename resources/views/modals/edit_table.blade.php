@@ -11,11 +11,16 @@
                     enctype="application/x-www-form-urlencoded">
                     @csrf
                     {{ method_field('PUT') }}
-                    <x-inputs.table_code className="col-auto" />
+                    <div class="col-12">
+                        <label>رمز الكرسي </label>
+                        <div id="code" type="text"> </div>
+                    </div>
+ 
                     <x-inputs.list_users_invo className="col-auto" />
-                     
-                    <x-inputs.table_type className="col-auto" />
-                    <x-inputs.table_image className="col-auto" />
+                    <div class="col-12">
+                        <label>رمز الكرسي </label>
+                        <div  id="type" type="text"> </div>
+                    </div>  
                      <x-buttons.submit className="col-auto" label="تحديث" />
 
                 </form>

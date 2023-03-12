@@ -32,64 +32,36 @@ class GroupController extends Controller
         return  $output;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $invo = Group::find($id);
         return  response()->json($invo);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $invo = Group::whereId($id)->first();
 
         $invo->update($request->only(
             'name',
-            'color' 
+            'color'
         ));
 
         $output =  $this->groupRepository->getRow($invo);
         return  $output;
-         
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        $invo=Group::find($id);
-        if($invo){
+        $invo = Group::find($id);
+        if ($invo) {
             $invo->delete();
             return redirect()->back()->with('message', 'تم الحذف   ');
         }
-        
-      return redirect()->back()->with('error2', 'هذا العنصر غير موجود');
+        return redirect()->back()->with('error2', 'هذا العنصر غير موجود');
     }
 }

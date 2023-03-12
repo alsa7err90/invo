@@ -1,15 +1,21 @@
 <?php
 
 use App\Models\Group;
+use App\Models\Invitation;
 use App\Models\User;
 
+// 1 - getNameGroupById
+// 2 - uploadImage
+// 3 - getUsernameById
+
+// 1
 function getNameGroupById($id){
   $group=  Group::whereId($id)->first(); 
   if($group){
     return $group->name;
   } 
 }
-
+// 2
 function uploadImage($request)
 {
    
@@ -23,12 +29,9 @@ function uploadImage($request)
   return $data;
 }
 
+// 3
 function getUsernameById($id){
-    if($id >0 ){
-           $user=  User::whereId($id)->first(); 
-           if($user){
-             return $user->name;
-           }
-    }
- 
+    if($id){
+        return   $user=  Invitation::whereId($id)->first()->name;  
+    } 
 }

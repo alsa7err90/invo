@@ -6,6 +6,13 @@
 // 6 - delete invitation
 // 7 - get a invitation and put it in model
 // 8 - editGroup
+// 9 - editSurname
+// 10 - editUser
+// 11 - editTable
+// 12 - editPermission
+// 13 - mypermissions
+// 14 - form_ajax_post_edit_1 
+
 
 
 $(document).ready(function () {
@@ -328,8 +335,8 @@ $(document).ready(function () {
             cache: false,
             success: function (response) {
                 console.log(response);
-                $("#form_ajax_post_edit input[name=code]").val(response.code);
-                $("#form_ajax_post_edit select[name=type]").val(response.type); 
+                $("#form_ajax_post_edit #code").html(response.code);
+                $("#form_ajax_post_edit #type").html(response.type); 
                  $("#form_ajax_post_edit").attr("data-action", url_update);
                 $("#form_ajax_post_edit").attr("data-id", id);
             },
@@ -383,15 +390,13 @@ $(document).ready(function () {
         });
     });
     // end 12
-    function mypermissions(item) {
-        
-        $(".form-check #"+item.id).attr('checked',true); 
-         
-
+    // 13 
+    function mypermissions(item) { 
+        $(".form-check #"+item.id).attr('checked',true);   
     }
 
 
-    //  2
+    //  14 
     $(form_ajax_post_edit_1).on("submit", function (event) {
         event.preventDefault();
         var url = $(this).attr("data-action");
@@ -421,5 +426,5 @@ $(document).ready(function () {
             },
         }) ;
     });
-    // end 2
+    // end 14
 });

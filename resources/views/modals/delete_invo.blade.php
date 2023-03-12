@@ -2,17 +2,12 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="" method="POST" id="form_delete">
-                <div class="modal-body">
-                    @csrf
-                    @method('DELETE')
-                    <h5 class="text-center">تحذير </h5>
-                </div> 
-                <div class="modal-body">
-                    <p>Are you sure you want to delete?</p>
-                </div>
+                @csrf
+                @method('DELETE') 
+               <x-other.textdelete />
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-danger">نعم , احذف</button>
+                    <x-buttons.cancel className="col-auto" label="الغاء"  />  
+                   <x-buttons.submit className="col-auto" label="حذف"  />  
                 </div>
             </form>
         </div>

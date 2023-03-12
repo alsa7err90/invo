@@ -3,11 +3,11 @@
 // 1 - discFeeFromAmount
 // 2 - getStatusLang
 // 3 - quickRandom
-
+// 4 - getStatusAttentions
+// 5 - getStatusAttend
+// 6 - getStatusTable
  
-// 1 
- 
-
+// 1  
 function getStatus($status)
 {
   switch ($status) {
