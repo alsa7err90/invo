@@ -1,6 +1,11 @@
+.py-4{
+    background-color:var(--bs-gray-100);
+}
 .topbar {
-    text-align: center;
-    padding: 5px 0;
+    background-color:var(--bs-gray-100);
+    text-align: center; 
+    font-size: 18px;
+    font-weight: bold;
 }
 /* navbar  */
 #neubar {
@@ -12,8 +17,10 @@
     border-radius: 6px;
     background: linear-gradient(145deg, #cdffca, #caf5b2);
 }
-#neubar .dropdown-menu a:hover {
-    color: #454545;
+ 
+.nav-link{
+    font-size: 18px;
+    font-weight: bold;
 }
 #neubar .nav-item {
     margin: auto 4px;
@@ -24,6 +31,7 @@
 }
 #neubar .dropdown-menu {
     background: #f3f3f3;
+    width: 130%;
 }
 a.navbar-brand {
     color: #454545;
@@ -38,7 +46,7 @@ a.navbar-brand {
 .table-wrapper {
     min-width: 1000px;
     background: #fff;
-    padding: 20px 25px;
+    padding: 20px 25px 100px 25px;
     border-radius: 3px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
@@ -200,3 +208,22 @@ table.table .avatar {
     flex-wrap: wrap;
     gap: 20px;
 }
+
+/* footer */
+#lab_social_icon_footer {
+    padding: 40px 0;
+    background-color:var(--bs-blue);
+  }
+  
+  #lab_social_icon_footer a {
+    color: #fff;
+  }
+  
+ 
+  
+   
+  /*
+      Multicoloured Hover Variations
+  */
+  
+  

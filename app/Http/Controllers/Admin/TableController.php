@@ -87,6 +87,6 @@ class TableController extends Controller
 
     public function report()
     {
-        //
+        
     }
 }

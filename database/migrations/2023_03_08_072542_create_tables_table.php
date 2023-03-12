@@ -17,7 +17,7 @@ class CreateTablesTable extends Migration
             $table->id();
             $table->string('code');
             $table->string('invitation')->nullable();
-            $table->string('type');
+            $table->string('type')->default('empty');
             $table->enum('status',[0,1]);
             $table->string('image'); 
             $table->timestamps();

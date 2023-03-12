@@ -33,18 +33,20 @@
 
 <body>
     <div id="app">
-        <div class="topbar">
-            hello @if (auth()->user())
-                {{ auth()->user()->name }}
-                <a class="dropdown-item" href="{{ route('logout') }}"
+        <div class="topbar  ">
+            <div>
+                مرحبا {{ auth()->user()->name }}
+
+                <a class="btn btn-primary " style="border-radius: 0 ; padding-right: 20px; padding-left: 20px"
+                    href="{{ route('logout') }}"
                     onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
+                document.getElementById('logout-form').submit();">
+                    تسجيل الخروج
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
-                </a>
-            @endif
+                </a> 
+            </div> 
         </div>
         @include('layouts.navbar')
 
@@ -52,6 +54,20 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <footer  id="lab_social_icon_footer">
+            
+                <!-- Include Font Awesome Stylesheet in Header -->
+                 <div class="container">
+                        <div class="text-center center-block"> 
+                                <a class="px-4" href="#"><i id="social-fb" class="fa fa-facebook  fa-2x "></i></a>
+                                <a class="px-4" href="#"> </i><i id="social-tw" class="fa fa-twitter  fa-2x"></i></a>
+                                <a class="px-4" href="#"><i id="social-gp" class="fa fa-linkedin fa-2x"></i></a> 
+                    </div>
+                </div>
+                
+        </footer>
+
     </div>
     {{-- bootstrap  --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
@@ -67,6 +83,8 @@
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}" defer></script>
     <script src="{{ asset('js/jquery-qrcode.min.js') }}"></script>
+
+    @yield('javascript')
 
     <script type="text/javascript">
         /** Default configuration **/
