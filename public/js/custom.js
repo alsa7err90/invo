@@ -71,7 +71,7 @@ $(document).ready(function () {
             enctype: "multipart/form-data",
             success: function (response) {
                 console.log(response);
-                if(response !== "error"){
+                if(response !== "error"){ 
                     $(`.${id}`).replaceWith(response);  
                     $("#modal_edit_public .btn-close").click();
                     $("#addModal .btn-close").click();
@@ -140,6 +140,9 @@ $(document).ready(function () {
             cache: false,
             success: function (response) {
                 console.log(response);
+                
+                $('.loader_model').hide();
+                $('.modal_body').css('display', 'inline-block');
                 $("#form_ajax_post_edit input[name=surname]").val(response.surname);
                 $("#form_ajax_post_edit input[name=surname2]").val(response.surname2);
                 $("#form_ajax_post_edit input[name=name]").val(response.name);
@@ -198,6 +201,8 @@ $(document).ready(function () {
             cache: false,
             success: function (response) {
                 console.log(response);
+                
+                $('.loader_model').hide();
                 $("#table_show tbody").html(response);
             },
             error: function (xhr, textStatus, error) {
@@ -228,6 +233,8 @@ $(document).ready(function () {
             cache: false,
             success: function (response) {
                 console.log(response);
+                $('.loader_model').hide();
+                $('.modal_body').css('display', 'inline-block');
                  $("#form_ajax_post_edit input[name=name]").val(response.name);
                 $("#form_ajax_post_edit input[name=color]").attr('value',response.email);
                 $("#form_ajax_post_edit").attr("data-action", url_update);
@@ -262,7 +269,9 @@ $(document).ready(function () {
             contentType: false,
             cache: false,
             success: function (response) {
-                console.log(response);
+                console.log(response); 
+                $('.loader_model').hide();
+                $('.modal_body').css('display', 'inline-block');
                  $("#form_ajax_post_edit input[name=title]").val(response.title);
                 $(`#form_ajax_post_edit input[value!=${!response.lang}]`).attr('checked',false)
                  $(`#form_ajax_post_edit input[value=${response.lang}]`).attr('checked',true)
@@ -300,6 +309,8 @@ $(document).ready(function () {
             cache: false,
             success: function (response) {
                 console.log(response);
+                $('.loader_model').hide();
+                $('.modal_body').css('display', 'inline-block');
                 $("#form_ajax_post_edit input[name=nickname]").val(response.nickname);
                 $("#form_ajax_post_edit input[name=email]").val(response.email); 
                  $("#form_ajax_post_edit").attr("data-action", url_update);
@@ -335,6 +346,8 @@ $(document).ready(function () {
             cache: false,
             success: function (response) {
                 console.log(response);
+                $('.loader_model').hide();
+                $('.modal_body').css('display', 'inline-block');
                 $("#form_ajax_post_edit #code").html(response.code);
                 $("#form_ajax_post_edit #type").html(response.type); 
                 $("#image_table_position").attr("src", url_uploads+response.image);

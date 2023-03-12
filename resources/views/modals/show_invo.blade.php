@@ -2,6 +2,7 @@
     <div class="modal-dialog modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-body"> 
+                <span class="loader_model"></span>
                 <table id="table_show" class="table table-bordered table-striped table-hover table-condensed leftjob"> 
                     <tbody> 
                     </tbody> 

@@ -7,14 +7,17 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" id="form_ajax_post_edit" class="fabrikForm" data-action="" data-id=""
-                    enctype="application/x-www-form-urlencoded">
-                    @csrf
-                    {{ method_field('PUT') }}
-                    <x-inputs.surname className="col-12 " />
-                    <x-inputs.lang className="col-12 pt-2" />
-                    <x-buttons.submit label="تعديل" className="col-3" />
-                </form>
+                <span class="loader_model"></span>
+                <div class="modal_body" style="display: none">
+                    <form method="post" id="form_ajax_post_edit" class="fabrikForm" data-action="" data-id=""
+                        enctype="application/x-www-form-urlencoded">
+                        @csrf
+                        {{ method_field('PUT') }}
+                        <x-inputs.surname className="col-12 " />
+                        <x-inputs.lang className="col-12 pt-2" />
+                        <x-buttons.submit label="تعديل" className="col-3" />
+                    </form>
+                </div>
             </div>
         </div>
     </div>
