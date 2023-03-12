@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\GroupController;
 use App\Http\Controllers\Admin\InvitationController;
+use App\Http\Controllers\Admin\QrcodeController;
 use App\Http\Controllers\Admin\SearchController;
 use App\Http\Controllers\Admin\SurnameController;
 use App\Http\Controllers\Admin\TableController;
@@ -37,6 +38,7 @@ Route::group(['middleware' => ['auth','permission:view_dashboard']], function ()
     Route::resource('tables', TableController::class);
     Route::resource('users', UserController::class)->middleware('permission:user_management');
     Route::resource('qrcode', QrcodeController::class)->middleware('permission:qrcode');
+    Route::get('new/qrcode', [QrcodeController::class,'new_qrcode'])->name('new_qrcode') ;
     
     Route::get('profile/myProfile', [UserController::class, 'myProfile'])->name('profile.myProfile');
     Route::post('profile/updateMyProfile', [UserController::class, 'updateMyProfile'])->name('profile.updateMyProfile');

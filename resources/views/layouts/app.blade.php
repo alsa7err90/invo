@@ -32,6 +32,23 @@
 </head>
 
 <body>
+    <div class="laod_page active">
+        <div class="sk-circle">
+            <div class="sk-circle1 sk-child"></div>
+            <div class="sk-circle2 sk-child"></div>
+            <div class="sk-circle3 sk-child"></div>
+            <div class="sk-circle4 sk-child"></div>
+            <div class="sk-circle5 sk-child"></div>
+            <div class="sk-circle6 sk-child"></div>
+            <div class="sk-circle7 sk-child"></div>
+            <div class="sk-circle8 sk-child"></div>
+            <div class="sk-circle9 sk-child"></div>
+            <div class="sk-circle10 sk-child"></div>
+            <div class="sk-circle11 sk-child"></div>
+            <div class="sk-circle12 sk-child"></div>
+          </div>
+        <img id="image_load" src="{{ asset('favi.png')}}" alt="">
+    </div>
     <div id="app">
         <div class="topbar  ">
             <div>
@@ -45,28 +62,15 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
-                </a> 
-            </div> 
+                </a>
+            </div>
         </div>
         @include('layouts.navbar')
 
+        
+        @yield('content')
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-
-        <footer  id="lab_social_icon_footer">
-            
-                <!-- Include Font Awesome Stylesheet in Header -->
-                 <div class="container">
-                        <div class="text-center center-block"> 
-                                <a class="px-4" href="#"><i id="social-fb" class="fa fa-facebook  fa-2x "></i></a>
-                                <a class="px-4" href="#"> </i><i id="social-tw" class="fa fa-twitter  fa-2x"></i></a>
-                                <a class="px-4" href="#"><i id="social-gp" class="fa fa-linkedin fa-2x"></i></a> 
-                    </div>
-                </div>
-                
-        </footer>
+        @include('layouts.footer')
 
     </div>
     {{-- bootstrap  --}}
@@ -83,12 +87,18 @@
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}" defer></script>
     <script src="{{ asset('js/jquery-qrcode.min.js') }}"></script>
-
+    
     @yield('javascript')
+    <script>
+        var url_uploads = "{{ asset('/') }}uploads/";
+        var url_new_qrcode = "{{ route('new_qrcode') }}";
 
-    <script type="text/javascript">
-        /** Default configuration **/
-
+        $(window).on('load', function () {
+    
+            $(".laod_page").fadeOut("slow");;
+        });
+            
+         
         Coloris({
             el: '.coloris',
             swatches: [
@@ -130,10 +140,6 @@
             theme: 'polaroid',
             swatchesOnly: true
         });
-    </script>
-
-    <script>
-        var url_uploads = "{{ asset('/') }}uploads/";
     </script>
 </body>
 

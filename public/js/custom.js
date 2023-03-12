@@ -14,8 +14,11 @@
 // 14 - form_ajax_post_edit_1 
 
 
+ 
 
 $(document).ready(function () {
+    
+    
     var form_ajax_post = "#form_ajax_post";
     var form_ajax_post_search = "#form_ajax_post_search";
     var form_ajax_post_edit = "#form_ajax_post_edit";
@@ -426,4 +429,38 @@ $(document).ready(function () {
         }) ;
     });
     // end 14
+
+    
+
+    
+    $('#createQrcode').on("click", function (event) {
+        event.preventDefault();  
+        var qrcode = $('#input_qrcode').val();
+        
+        $.ajax({
+            url: url_new_qrcode+"?qrcode="+qrcode,
+            method: "get",
+             
+            processData: false,
+            contentType: false,
+            cache: false, 
+            success: function (response) {
+                console.log(response); 
+                $('#generate_qrcode').html(response);
+            },
+            error: function (data) {
+                var errors = data.responseJSON;
+                console.log(errors);
+            },
+        }).fail(function (data) {
+            var response = JSON.parse(data.responseText);
+
+            $.each(response.errors, function (key, value) {
+                alert(value);
+            });
+        });
+    });
+    // end 1
+
 });
+
