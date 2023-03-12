@@ -38,7 +38,7 @@
                                             <x-buttons.edit target="modal_edit_user" :id="$item->id" :url="route('users.edit', $item->id)"
                                                 modal="editUser" />
                                             <x-buttons.delete target="deleteModal" :url="route('users.destroy', $item->id)" />
-                                            <x-buttons.permission target="deleteModal" :url="route('users.destroy', $item->id)" />
+                                            <x-buttons.permission target="addModalPermission" :id="$item->id" :url="route('users.permissions', $item->id)"  modal="editPermission"  />
 
 
                                         </td>
@@ -63,4 +63,6 @@
     @include('modals.new_user')
     @include('modals.edit_user')
     @include('modals.delete_invo')
+    @include('modals.new_permission')
+    
 @endsection

@@ -22,6 +22,10 @@ class InvitationController extends Controller
     public function __construct(InvitationRepositoryInterface $invitationRepository)
     {
         $this->invitationRepository = $invitationRepository; 
+         $this->middleware('permission:accepted_invo', ['only' => ['index']]);
+         $this->middleware('permission:send_invo', ['only' => ['attentions','store']]);
+         $this->middleware('permission:public_invo', ['only' => ['public']]);
+
     }
     /**
      * Display a listing of the resource.

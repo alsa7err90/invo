@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Interfaces\UserRepositoryInterface;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -91,4 +92,16 @@ class UserController extends Controller
         }
         return redirect()->back()->with('message', 'حدث خطأ غير متوقع ');
     }
+
+    public function permissions(Request $request,$id){
+        $user = User::whereId($id)->with('permission')->first();
+        return $user->permission ;
+    }
+
+    public function permissions_update(Request $request,$id){ 
+         DB::table('permission_user')->where('user_id',$id)->whereNotIn('permission_id', $request->permissions)->delete();
+        return true; 
+    }
+
+    
 }

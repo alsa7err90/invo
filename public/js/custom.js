@@ -12,6 +12,8 @@ $(document).ready(function () {
     var form_ajax_post = "#form_ajax_post";
     var form_ajax_post_search = "#form_ajax_post_search";
     var form_ajax_post_edit = "#form_ajax_post_edit";
+    var form_ajax_post_edit_1 = "#form_ajax_post_edit_1";
+    
 // 1
     $(form_ajax_post).on("submit", function (event) {
         event.preventDefault();  
@@ -344,5 +346,80 @@ $(document).ready(function () {
             });
         });
     });
-    // end 10
+    // end 11
+
+    
+    // 12
+     
+    $("body").on("click", "#editPermission", function (event) {
+        event.preventDefault();
+        var id = $(this).data("id");
+        var url = $(this).attr("href");
+        var url_update = url.replace("/edit", "");
+        $.ajax({
+            url: url,
+            method: "get",
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function (response) {
+                console.log(response);  
+                $(".form-check input").attr('checked',false); 
+                response.forEach(mypermissions);  
+                 $("#form_ajax_post_edit_1").attr("data-action", url_update);
+                $("#form_ajax_post_edit_1").attr("data-id", id);
+            },
+            error: function (xhr, textStatus, error) {
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+            },
+        }).fail(function (data) {
+            var response = JSON.parse(data.responseText);
+
+            $.each(response.errors, function (key, value) {
+                alert(value);
+            });
+        });
+    });
+    // end 12
+    function mypermissions(item) {
+        
+        $(".form-check #"+item.id).attr('checked',true); 
+         
+
+    }
+
+
+    //  2
+    $(form_ajax_post_edit_1).on("submit", function (event) {
+        event.preventDefault();
+        var url = $(this).attr("data-action");
+        var id = $(this).attr("data-id");
+        $.ajax({
+            url: url,
+            method: "POST",
+            data: new FormData(this),
+            processData: false,
+            contentType: false,
+            cache: false,
+            enctype: "multipart/form-data",
+            success: function (response) {
+                console.log(response);
+                if(response !== "error"){ 
+                    $("#addModalPermission .btn-close").click(); 
+                    alert("تمت التعديل بنجاح");
+                }
+                else{
+                   
+                }
+               
+            },
+            error: function (data ) {
+                var errors = data.responseJSON;
+              console.log(errors);
+            },
+        }) ;
+    });
+    // end 2
 });

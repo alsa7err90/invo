@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Group;
 use App\Models\Invitation;
+use App\Models\Permission;
 use App\Models\Surname;
 use App\Models\Table;
 use App\Models\User;
@@ -50,5 +51,8 @@ class AppServiceProvider extends ServiceProvider
         // list users
         $list_users_invo = Invitation::get();
         View::share('list_users_invo',$list_users_invo);
+        
+        $list_permission = Permission::get();
+        View::share('list_permission',$list_permission);
     }
 }

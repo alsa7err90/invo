@@ -1,1 +1,6 @@
-<a href="#" class="delete" title="Delete" data-toggle="tooltip"> الصلاحيات</a>
+ 
+<a href="{{ $url }}" id="{{ $modal }}"
+ title="صلاحيات" data-id="{{ $id }}" 
+data-bs-toggle="modal"
+data-bs-target="#{{ $target }}">
+الصلاحيات</a>
