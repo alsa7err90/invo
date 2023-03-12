@@ -4,7 +4,10 @@ use App\Models\Group;
 use App\Models\User;
 
 function getNameGroupById($id){
-    return Group::whereId($id)->first()->name;
+  $group=  Group::whereId($id)->first(); 
+  if($group){
+    return $group->name;
+  } 
 }
 
 function uploadImage($request)
@@ -22,7 +25,10 @@ function uploadImage($request)
 
 function getUsernameById($id){
     if($id >0 ){
-           return User::whereId($id)->first()->name;
+           $user=  User::whereId($id)->first(); 
+           if($user){
+             return $user->name;
+           }
     }
  
 }

@@ -55,8 +55,8 @@
                                                 :url="route('invitations.edit', $invo->id)"  modal="editInvo" />
                                             <x-buttons.delete target="deleteModal" :url="route('invitations.destroy', $invo->id)" />
                                             <x-buttons.show target="modal_show_invo" :url="route('invitations.show', $invo->id)" />
-                                            <x-buttons.print_black target="print_black" :url="route('invitations.show', $invo->id)" />
-                                            <x-buttons.print_colors target="print_colors" :url="route('invitations.show', $invo->id)" />
+                                                <x-buttons.print_black   :url="route('invitations.print', $invo->id)" />
+                                                    <x-buttons.print_colors   :url="route('invitations.print', $invo->id)" />
                                         </td>
                                     </tr>
                                 @empty

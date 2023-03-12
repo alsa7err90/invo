@@ -36,7 +36,7 @@ class InvitationRepository implements InvitationRepositoryInterface
 
   public function update($request, $id)
   {
-    $invo = Invitation::whereId($id)->first(); 
+    $invo = Invitation::whereId($id)->first();
     $invo->update($request->only(
       'surname',
       'surname2',
@@ -55,7 +55,7 @@ class InvitationRepository implements InvitationRepositoryInterface
     $details = [
       'title' => " التسجيل لحضور الجلسة الحوارية لتدشين برنامج تحول القطاع الصحي",
       'username' => $request->name,
-      'new_status'=>""
+      'new_status' => ""
     ];
     if ($invo->send_email == 1) {
       switch ($request->attend_confirm) {
@@ -85,7 +85,7 @@ class InvitationRepository implements InvitationRepositoryInterface
     if ($invo->is_out == 1) {
       $is_out = "خارجي";
     }
-    $output  = '<tr>' .
+    $output  = '<tr class="'.$invo->id.'">' .
       '<td>' . $invo->id . '</td>' .
       '<td>' . $invo->created_at . '</td>' .
       '<td>' . $invo->name . '</td>' .
@@ -94,10 +94,22 @@ class InvitationRepository implements InvitationRepositoryInterface
       '<td>' . getStatus($invo->status) . '</td>' .
       '<td>' .  $is_out . '</td>' .
       '<td><input type="checkbox"></td>' .
-      '<td><a href="#" class="settings" title="تحرير" data-toggle="tooltip"><i class="material-icons">&#xe3c9;</i></a> <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a> <a href="#" class="settings" title="استعراض" data-toggle="tooltip"><i class="material-icons">&#xe8b6;</i></a> <a href="#" class="settings" title="طباعة" data-toggle="tooltip"><i class="material-icons">&#xe8ad;</i></a><a href="#" class="settings" title="طباعة مع حلفية" data-toggle="tooltip"><iclass="material-icons text-success">&#xe8ad;</i></td>' .
+      '<td>' .
+      view('components.buttons.edit', [
+        'target' => 'modal_edit_public',
+        'id' => $invo->id,
+        'url' => route('invitations.edit', $invo->id),
+        'modal' => 'editInvo'
+      ]) . 
+      view('components.buttons.delete', ['target' => 'deleteModal', 'url' => route('invitations.destroy', $invo->id)]) .
+      view('components.buttons.show', ['target' => 'modal_show_invo', 'url' => route('invitations.show', $invo->id)]) .
+      view('components.buttons.print_black', ['target' => 'print_black', 'url' => route('invitations.show', $invo->id)]) .
+      view('components.buttons.print_colors', ['target' => 'print_colors', 'url' => route('invitations.show', $invo->id)]) .
+      '</td>' .
       '</tr>';
     return $output;
   }
+ 
 
   public function getTable($invo)
   {

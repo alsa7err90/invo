@@ -59,5 +59,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('invitation/exportPublic', [InvitationController::class, 'exportPublic'])->name('invitations.exportPublic');
     Route::get('invitation/exportAtt', [InvitationController::class, 'exportAtt'])->name('invitations.exportAtt');
     
-
+    Route::get('invitation/print/{id}', [InvitationController::class, 'print'])->name('invitations.print');
+     
 });

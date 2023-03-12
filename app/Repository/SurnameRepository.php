@@ -13,15 +13,21 @@ class SurnameRepository implements SurnameRepositoryInterface
     return $surname;
   }
  
-  public function getRow($name)
+  public function getRow($item)
   { 
     $output  = '<tr>' .
-      '<td>' . $name->id . '</td>' .
-      '<td>' . $name->title . '</td>' .
-      '<td>' . getStatusLang($name->lang) . '</td>' .
+      '<td>' . $item->id . '</td>' .
+      '<td>' . $item->title . '</td>' .
+      '<td>' . getStatusLang($item->lang) . '</td>' .
       '<td><input type="checkbox"></td>' .
-      '<td><a href="#" class="settings" title="تحرير" data-toggle="tooltip"><i class="material-icons">&#xe3c9;</i></a> <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a> </td>' .
+      '<td> '.view('components.buttons.edit', [
+        'target' => 'modal_edit_surname',
+        'id' => $item->id,
+        'url' => route('surnames.edit', $item->id),
+        'modal' => 'editSurname'
+      ]) .view('components.buttons.delete', ['target' => 'deleteModal', 'url' => route('surnames.destroy', $item->id)]) .
+      '</td>' .
       '</tr>';
     return $output;
   }
-}
+}  

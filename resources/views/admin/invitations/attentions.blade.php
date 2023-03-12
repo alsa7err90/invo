@@ -15,8 +15,8 @@
                             <x-inputs.fullname className="col-md-3" />
                             <x-inputs.email className="col-md-3" />
                             <x-inputs.mobile className="col-md-3" />
-                            <x-inputs.attend_confirm className="col-md-3" />
-                            <x-buttons.submit className="col-md-3"  label="بحث" /> 
+                            <x-inputs.attendconfirm className="col-md-3" />
+                            <x-buttons.submit className="col-md-3" label="بحث" />
                         </form>
 
                         <x-alert.success />
@@ -37,7 +37,7 @@
                             <tbody>
 
                                 @forelse ($invos as $invo)
-                                    <tr  class="{{ $invo->id }}">
+                                    <tr class="{{ $invo->id }}">
                                         <td>{{ $invo->id }}</td>
                                         <td>{{ $invo->created_at->format('Y-m-d H:m:s') }}</td>
                                         <td>{{ $invo->name }}</td>
@@ -46,13 +46,12 @@
                                         <td>{{ $invo->email }}</td>
                                         <td> <input type="checkbox"></td>
                                         <td>
-                                            <x-buttons.edit target="modal_edit_public" :id="$invo->id"
-                                                :url="route('invitations.edit', $invo->id)" modal="editInvo" />
+                                            <x-buttons.edit target="modal_edit_public" :id="$invo->id" :url="route('invitations.edit', $invo->id)"
+                                                modal="editInvo" />
                                             <x-buttons.delete target="deleteModal" :url="route('invitations.destroy', $invo->id)" />
                                             <x-buttons.show target="modal_show_invo" :url="route('invitations.show', $invo->id)" />
-                                            <x-buttons.print_black target="print_black" :url="route('invitations.show', $invo->id)" />
-                                            <x-buttons.print_colors target="print_colors" :url="route('invitations.show', $invo->id)" />
-
+                                            <x-buttons.print_black :url="route('invitations.print', $invo->id)" />
+                                            <x-buttons.print_colors :url="route('invitations.print', $invo->id)" />
                                         </td>
                                     </tr>
                                 @empty

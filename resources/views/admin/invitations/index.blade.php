@@ -10,19 +10,20 @@
                         <x-other.title target="addModal" :export="route('invitations.exportAll')">
                             <x-slot name="title"> جميع الدعوات </x-slot>
                         </x-other.title>
-                         <x-alert.success />
+                        <x-alert.success />
                         <x-alert.error />
-                        <form  class="row g-3" id="form_ajax_post_search" method="post" data-action="{{ route('search.all') }}">
-                            @csrf 
+                        <form class="row g-3" id="form_ajax_post_search" method="post"
+                            data-action="{{ route('search.all') }}">
+                            @csrf
                             <x-inputs.fullname className="col-md-3" />
                             <x-inputs.email className="col-md-3" />
-                            <x-inputs.seattype className="col-md-3" /> 
+                            <x-inputs.seattype className="col-md-3" />
                             <x-inputs.mobile className="col-md-3" />
                             <x-inputs.status className="col-md-3" />
                             <x-inputs.is_attentions className="col-md-3" />
                             <x-inputs.group className="col-md-3" />
                             <x-inputs.is_out className="col-md-3" />
-                            <x-buttons.submit className="col-md-3"  label="بحث" /> 
+                            <x-buttons.submit className="col-md-3" label="بحث" />
                         </form>
                         <x-alert.success />
                         <x-alert.error />
@@ -45,7 +46,7 @@
                             <tbody>
 
                                 @forelse ($invos as $invo)
-                                    <tr  class="{{ $invo->id }}">
+                                    <tr class="{{ $invo->id }}">
                                         <td>{{ $invo->id }}</td>
                                         <td>{{ $invo->created_at->format('Y-m-d H:m:s') }}</td>
                                         <td>{{ $invo->name }}</td>
@@ -53,18 +54,17 @@
                                         <td>{{ $invo->email }}</td>
                                         <td>{{ getStatusAttentions($invo->is_attentions) }}</td>
                                         <td>{{ $invo->seatcode }}</td>
-                                        <td>{{ getNameGroupById($invo->group_id) }}</td>
+                                        <td>{{ getNameGroupById($invo->group_id) ?? '' }}</td>
                                         <td>{!! getStatusAttend($invo->attend) !!}</td>
 
                                         <td> <input type="checkbox"></td>
                                         <td>
-                                            <x-buttons.edit target="modal_edit_public" :id="$invo->id"
-                                                :url="route('invitations.edit', $invo->id)"  modal="editInvo" />
+                                            <x-buttons.edit target="modal_edit_public" :id="$invo->id" :url="route('invitations.edit', $invo->id)"
+                                                modal="editInvo" />
                                             <x-buttons.delete target="deleteModal" :url="route('invitations.destroy', $invo->id)" />
-                                            <x-buttons.show target="modal_show_invo" :url="route('invitations.show', $invo->id)" />
-                                            <x-buttons.print_black target="print_black" :url="route('invitations.show', $invo->id)" />
-                                            <x-buttons.print_colors target="print_colors" :url="route('invitations.show', $invo->id)" />
-
+                                            <x-buttons.show target="modal_show_invo" :url="route('invitations.show', $invo->id)" /> 
+                                            <x-buttons.print_black :url="route('invitations.print', $invo->id)" />
+                                            <x-buttons.print_colors :url="route('invitations.print', $invo->id)" />
                                         </td>
                                     </tr>
                                 @empty

@@ -29,18 +29,18 @@
 
                                 @forelse ($users as $item)
                                     <tr class="{{ $item->id }}">
-                                        <td>{{ $item->id }}</td> 
-                                        <td>{{ $item->nickname }}</td> 
+                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $item->nickname }}</td>
                                         <td>{{ $item->email }}</td>
                                         <td> <input type="checkbox"></td>
                                         <td>
 
-                                               <x-buttons.edit target="modal_edit_user" :id="$item->id"
-                                                :url="route('users.edit', $item->id)" modal="editUser" />
-                                                <x-buttons.delete target="deleteModal" :url="route('users.destroy', $item->id)" />
-                                        
-                                                    <a href="#" class="delete" title="Delete" data-toggle="tooltip"> الصلاحيات</a>
-    
+                                            <x-buttons.edit target="modal_edit_user" :id="$item->id" :url="route('users.edit', $item->id)"
+                                                modal="editUser" />
+                                            <x-buttons.delete target="deleteModal" :url="route('users.destroy', $item->id)" />
+                                            <x-buttons.permission target="deleteModal" :url="route('users.destroy', $item->id)" />
+
+
                                         </td>
                                     </tr>
                                 @empty
@@ -56,9 +56,9 @@
     </div>
 
     <!-- Modal -->
-   
 
-    
+
+
     @include('modals.new_user')
     @include('modals.edit_user')
     @include('modals.delete_invo')

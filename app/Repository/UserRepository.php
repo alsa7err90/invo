@@ -17,14 +17,14 @@ class UserRepository implements UserRepositoryInterface
         return false;
     }
     public function update($request, $user_id)
-    {   
+    {
         $user = User::find($user_id);
         $user->nickname = $request->nickname;
         if ($request->has('password')) {
             $user->password = bcrypt($request->password);
         }
         $user->email = $request->email;
-        if($user->update()){
+        if ($user->update()) {
             return true;
         }
         return false;
@@ -40,20 +40,20 @@ class UserRepository implements UserRepositoryInterface
     }
 
 
-    public function getRow($name)
+    public function getRow($item)
     {
         $output  = '<tr>' .
-            '<td>' . $name->id . '</td>' .
-            '<td>' . $name->nickname . '</td>' .
-            '<td>' .  $name->email . '</td>' .
+            '<td>' . $item->id . '</td>' .
+            '<td>' . $item->nickname . '</td>' .
+            '<td>' .  $item->email . '</td>' .
             '<td><input type="checkbox"></td>' .
-            '<td> <a href="#" class="settings" title="تحرير" data-toggle="tooltip"><i
-                class="material-icons">&#xe3c9;</i></a>
-                <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i
-                class="material-icons">&#xE5C9;</i></a>
-                <a href="#" class="delete" title="Delete" data-toggle="tooltip"> الصلاحيات</a>
-                </td>' .
-            '</tr>';
+            '<td> ' . view('components.buttons.edit', [
+                'target' => 'modal_edit_user',
+                'id' => $item->id,
+                'url' => route('users.edit', $item->id),
+                'modal' => 'editUser'
+            ]) . view('components.buttons.delete', ['target' => 'deleteModal', 'url' => route('users.destroy', $item->id)]) . '</td>' .
+            view('components.buttons.permission', ['target' => 'deleteModal', 'url' => route('users.destroy', $item->id)]) . '</td>' .'</tr>';
         return $output;
     }
 }

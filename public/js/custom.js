@@ -164,35 +164,14 @@ $(document).ready(function () {
     // end 4
     // 5
     $(".btn_delete").on("click", function (event) {
-        var href = $(this).data("href"); // Extract info from data-* attributes
+        var href = $(this).data("href");   
         $("#form_delete").attr("action", href);
     });
     // end 5
     // 6
     $("body").on("click", "#delete_invo", function (event) {
-        event.preventDefault();
-        let href = $(this).attr("data-attr");
-        
-        $.ajax({
-            url: href,
-            beforeSend: function () {
-                $("#loader").show();
-            },
-            // return the result
-            success: function (result) {
-                $("#deleteModal").modal("show");
-                $("#deleteBody").html(result).show();
-            },
-            complete: function () {
-                $("#loader").hide();
-            },
-            error: function (jqXHR, testStatus, error) {
-                console.log(error);
-                alert("Page " + href + " cannot open. Error:" + error);
-                $("#loader").hide();
-            },
-            timeout: 8000,
-        });
+        event.preventDefault(); 
+        $("#deleteModal").modal("show");  
     });
     // end 6
 

@@ -10,6 +10,7 @@ use App\Http\Requests\AttentionsStoreRequest;
 use App\Http\Requests\PublicStoreRequest;
 use App\Interfaces\InvitationRepositoryInterface;
 use App\Models\Invitation;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Maatwebsite\Excel\Facades\Excel;
@@ -129,4 +130,15 @@ class InvitationController extends Controller
     {
         return (new InvitationAtteExport('1'))->download('Invitations.xlsx'); 
      }
+
+     public function print(Request $request,$id) 
+     {
+        $invo = Invitation::whereId($id)->first();
+        if(isset($_GET['image']) &&$_GET['image'] == 1){
+             return view('admin.invitations.print_with_backgroun',compact('invo'));
+        }
+      
+         return view('admin.invitations.print',compact('invo'));
+      }
+     
 }
