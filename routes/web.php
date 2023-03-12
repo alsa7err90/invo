@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\SearchController;
 use App\Http\Controllers\Admin\SurnameController;
 use App\Http\Controllers\Admin\TableController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,13 +21,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+ 
+Route::get('/', [PublicController::class,'welcome']);
+Route::post('/', [PublicController::class,'new_invo']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // for admin
 Route::group(['middleware' => ['auth']], function () {
