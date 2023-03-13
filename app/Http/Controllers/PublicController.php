@@ -20,8 +20,7 @@ class PublicController extends Controller
     }
     public function new_invo(PublicStoreRequest $request){
         $request->request->add(['is_out' => '1']);
-        $invo =  $this->invitationRepository->storePublic($request);
-        dd($invo);
+        $invo =  $this->invitationRepository->storePublic($request); 
        if($invo){
         $complated = true;
        }

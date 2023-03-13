@@ -15,16 +15,22 @@ class PublicStoreRequest extends FormRequest
     {
         return [
             'email' => 'required|email|unique:invitations',
-            'name' => 'required|string|max:150' 
+            'name' => 'required|string|max:150' ,
+            'side' => 'required|string|max:150' ,
+            'position' => 'required|string|max:150' ,
+            'surname' => 'required|string|max:150' , 
         ];
     }
 
     public function messages()
     {
         return [
-            'email.required' => 'Email is required!',
-            'email.unique' => 'this email is exist!',
-            'name.required' => 'Name is required!' 
+            'email.required' => 'الايميل مطلوب!',
+            'email.unique' => 'هذا الايميل مستخدم من قبل!',
+            'name.required' => 'الاسم الكامل مطلوب!' ,
+            'side.required' => ' يرجى ملئ حقل الجهة!' ,
+            'position.required' => ' يرجى ملئ حقل  المنصب'  ,
+            'surname.required' => 'يرجى اختيار اللقب!'  ,
         ];
     }
 }

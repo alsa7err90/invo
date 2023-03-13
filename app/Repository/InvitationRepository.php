@@ -80,19 +80,13 @@ class InvitationRepository implements InvitationRepositoryInterface
   }
   public function getRow($invo)
   {
-
-    $is_out = "";
-    if ($invo->is_out == 1) {
-      $is_out = "خارجي";
-    }
-    $output  = '<tr class="'.$invo->id.'">' .
+    if($invo->is_attentions == 1){
+      $output  = '<tr class="'.$invo->id.'">' .
       '<td>' . $invo->id . '</td>' .
       '<td>' . $invo->created_at . '</td>' .
       '<td>' . $invo->name . '</td>' .
       '<td>' . $invo->mobile . '</td>' .
-      '<td>' . $invo->email . '</td>' .
-      '<td>' . getStatus($invo->status) . '</td>' .
-      '<td>' .  $is_out . '</td>' .
+      '<td>' . $invo->email . '</td>' .  
       '<td><input type="checkbox"></td>' .
       '<td>' .
       view('components.buttons.edit', [
@@ -107,6 +101,63 @@ class InvitationRepository implements InvitationRepositoryInterface
       view('components.buttons.print_colors', ['target' => 'print_colors', 'url' => route('invitations.show', $invo->id)]) .
       '</td>' .
       '</tr>';
+    }
+    elseif($invo->is_attentions == 2){
+
+      $is_out = "";
+      if ($invo->is_out == 1) {
+        $is_out = "خارجي";
+      }
+      $output  = '<tr class="'.$invo->id.'">' .
+        '<td>' . $invo->id . '</td>' .
+        '<td>' . $invo->created_at . '</td>' .
+        '<td>' . $invo->name . '</td>' .
+        '<td>' . $invo->mobile . '</td>' .
+        '<td>' . $invo->email . '</td>' .
+        '<td>' . getStatus($invo->status) . '</td>' .
+        '<td>' .  $is_out . '</td>' .
+        '<td><input type="checkbox"></td>' .
+        '<td>' .
+        view('components.buttons.edit', [
+          'target' => 'modal_edit_public',
+          'id' => $invo->id,
+          'url' => route('invitations.edit', $invo->id),
+          'modal' => 'editInvo'
+        ]) . 
+        view('components.buttons.delete', ['target' => 'deleteModal', 'url' => route('invitations.destroy', $invo->id)]) .
+        view('components.buttons.show', ['target' => 'modal_show_invo', 'url' => route('invitations.show', $invo->id)]) .
+        view('components.buttons.print_black', ['target' => 'print_black', 'url' => route('invitations.show', $invo->id)]) .
+        view('components.buttons.print_colors', ['target' => 'print_colors', 'url' => route('invitations.show', $invo->id)]) .
+        '</td>' .
+        '</tr>';
+    }
+    else{
+      $output  = '<tr class="'.$invo->id.'">' .
+      '<td>' . $invo->id . '</td>' .
+      '<td>' . $invo->created_at . '</td>' .
+      '<td>' . $invo->name . '</td>' .
+      '<td>' . $invo->mobile . '</td>' .
+      '<td>' . $invo->email . '</td>' .
+      '<td>' . getStatusAttentions($invo->is_attentions). '</td>' .
+      '<td>' .  $invo->seatcode . '</td>' .
+      '<td>' .  getNameGroupById($invo->group_id) ?? '' . '</td>' .
+      '<td>' .  getStatusAttend($invo->attend) . '</td>' .
+      '<td><input type="checkbox"></td>' .
+      '<td>' .
+      view('components.buttons.edit', [
+        'target' => 'modal_edit_public',
+        'id' => $invo->id,
+        'url' => route('invitations.edit', $invo->id),
+        'modal' => 'editInvo'
+      ]) . 
+      view('components.buttons.delete', ['target' => 'deleteModal', 'url' => route('invitations.destroy', $invo->id)]) .
+      view('components.buttons.show', ['target' => 'modal_show_invo', 'url' => route('invitations.show', $invo->id)]) .
+      view('components.buttons.print_black', ['target' => 'print_black', 'url' => route('invitations.show', $invo->id)]) .
+      view('components.buttons.print_colors', ['target' => 'print_colors', 'url' => route('invitations.show', $invo->id)]) .
+      '</td>' .
+      '</tr>';
+    }
+
     return $output;
   }
  

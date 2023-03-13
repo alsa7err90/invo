@@ -9,12 +9,12 @@
                 <form method="post" id="form_ajax_post" class="fabrikForm" data-action="{{ route('users.store') }}">
                     @csrf
 
-                    <x-inputs.nickname className="col-auto" />
-                    <x-inputs.email className="col-auto" />
-                    <x-inputs.password className="col-auto" />
-                    <x-inputs.password2 className="col-auto" />
+                    <x-inputs.nickname className="col-lg-6" />
+                    <x-inputs.email className="col-lg-6" />
+                    <x-inputs.password className="col-lg-6" />
+                    <x-inputs.password2 className="col-lg-6" />
 
-                    <x-buttons.submit className="col-auto" label="اضافة" />
+                    <x-buttons.submit className="col-lg-6" label="اضافة" />
 
                 </form>
             </div>

@@ -1,4 +1,4 @@
 <div class="{{ $className }}"> 
     <label for="mobile">  {{ $label ?? "الاسم الكامل" }}</label>
-    <input class="form-control" name="name" type="text"  >
+    <input class="form-control" name="name" type="text" value="{{ $value ?? '' }}"  >
 </div>
